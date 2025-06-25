@@ -1,8 +1,15 @@
-import 'package:advanced_ecommerce/features/Splash/presentation/views/splash_view.dart';
+import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(const FruitHub());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const FruitHub(),
+    ),
+  );
 }
 
 class FruitHub extends StatelessWidget {
@@ -10,8 +17,9 @@ class FruitHub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashView(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      getPages: AppRouter.getViews(),
     );
   }
 }
