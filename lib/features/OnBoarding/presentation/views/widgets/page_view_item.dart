@@ -1,7 +1,7 @@
-import 'package:advanced_ecommerce/core/Utils/gap.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/page_view_item_stack.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/page_view_subtitle.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
