@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_page_view.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingViewBody extends StatelessWidget {
@@ -5,8 +6,12 @@ class OnBoardingViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(),
+    return const Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [Expanded(child: OnBoardingPageView())],
+        ),
+      ),
     );
   }
 }
