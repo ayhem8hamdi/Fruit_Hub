@@ -30,7 +30,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           children: [
             // The upper plant SVG is placed in the top left of the column.
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SvgPicture.asset(Assets.splashUpperPlant),
               ],

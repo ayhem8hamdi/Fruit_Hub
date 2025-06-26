@@ -18,6 +18,7 @@ class FruitHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
       getPages: AppRouter.getViews(),
     );
