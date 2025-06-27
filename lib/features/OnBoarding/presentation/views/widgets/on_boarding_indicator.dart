@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -16,11 +17,11 @@ class OnboardingIndicator extends StatelessWidget {
           controller: controller,
           count: 2,
           effect: WormEffect(
-            dotHeight: 10,
-            dotWidth: 10,
-            spacing: 12,
-            activeDotColor: Colors.green,
-            dotColor: Colors.grey.shade300,
+            dotHeight: 11,
+            dotWidth: 11,
+            spacing: 7,
+            activeDotColor: AppColors.kPrimaryColor,
+            dotColor: const Color(0XFF5DB957).withOpacity(.5),
           ),
         ),
       ),

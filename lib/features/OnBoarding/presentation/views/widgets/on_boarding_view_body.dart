@@ -1,6 +1,6 @@
-import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button_builder.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/on_boarding_cubit.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_indicator.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_page_view.dart';
@@ -14,6 +14,7 @@ class OnBoardingViewBody extends StatelessWidget {
 
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: OnBoardingPageView(
@@ -21,8 +22,16 @@ class OnBoardingViewBody extends StatelessWidget {
               onPageChanged: cubit.pageChanged,
             ),
           ),
-          OnboardingIndicator(controller: cubit.pageController),
-          OnBoardingButtonBuilder(cubit: cubit),
+          const SizedBox(
+            height: 28,
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              OnboardingIndicator(controller: cubit.pageController),
+              const OnBoardingButtonBuilder(),
+            ],
+          ),
         ],
       ),
     );
