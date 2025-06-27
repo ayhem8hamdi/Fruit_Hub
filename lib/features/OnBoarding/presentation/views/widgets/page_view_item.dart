@@ -4,23 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class PageViewItem extends StatelessWidget {
-  const PageViewItem(
-      {super.key,
-      required this.image,
-      required this.bgImage,
-      required this.subtitle,
-      required this.title,
-      this.color});
+  const PageViewItem({
+    super.key,
+    required this.image,
+    required this.bgImage,
+    required this.subtitle,
+    required this.title,
+    this.color,
+    required this.isLastPage,
+  });
+
   final String image, bgImage;
   final String subtitle;
   final Widget title;
   final Color? color;
+  final bool isLastPage;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PageViewItemStack(
+          isLastPage: isLastPage,
           bgImage: bgImage,
           image: image,
           color: color,

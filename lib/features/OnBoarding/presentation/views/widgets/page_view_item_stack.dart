@@ -7,11 +7,13 @@ class PageViewItemStack extends StatelessWidget {
     required this.bgImage,
     required this.image,
     this.color,
+    required this.isLastPage,
   });
 
   final String bgImage;
   final String image;
   final Color? color;
+  final bool isLastPage;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +37,12 @@ class PageViewItemStack extends StatelessWidget {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 36, right: 20),
-          child: Text('تخط'),
-        )
+        isLastPage
+            ? const SizedBox.shrink()
+            : const Padding(
+                padding: EdgeInsets.only(top: 36, right: 20),
+                child: Text('تخط'),
+              )
       ]),
     );
   }
