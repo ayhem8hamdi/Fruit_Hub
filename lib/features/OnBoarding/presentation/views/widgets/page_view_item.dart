@@ -11,14 +11,12 @@ class PageViewItem extends StatelessWidget {
     required this.subtitle,
     required this.title,
     this.color,
-    required this.isLastPage,
   });
 
   final String image, bgImage;
   final String subtitle;
   final Widget title;
   final Color? color;
-  final bool isLastPage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,6 @@ class PageViewItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PageViewItemStack(
-          isLastPage: isLastPage,
           bgImage: bgImage,
           image: image,
           color: color,

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../view_model/onBoardingCubit/on_boarding_cubit.dart';
+import '../../view_model/onBoardingCubit/ob_boarding_states.dart';
 
 class PageViewItemStack extends StatelessWidget {
   const PageViewItemStack({
@@ -7,43 +10,72 @@ class PageViewItemStack extends StatelessWidget {
     required this.bgImage,
     required this.image,
     this.color,
-    required this.isLastPage,
   });
 
   final String bgImage;
   final String image;
   final Color? color;
-  final bool isLastPage;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.5,
-      child: Stack(fit: StackFit.passthrough, children: [
-        SvgPicture.asset(
-          bgImage,
-          color: color,
-          fit: BoxFit.fill,
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Align(
+      height: MediaQuery.sizeOf(context).height * 0.5,
+      child: Stack(
+        children: [
+          SvgPicture.asset(
+            bgImage,
+            color: color,
+            fit: BoxFit.fill,
+            width: double.infinity,
+          ),
+          Align(
             alignment: Alignment.bottomCenter,
             child: SvgPicture.asset(
               image,
               fit: BoxFit.none,
             ),
           ),
-        ),
-        isLastPage
-            ? const SizedBox.shrink()
-            : const Padding(
-                padding: EdgeInsets.only(top: 36, right: 20),
-                child: Text('تخط'),
-              )
-      ]),
+          const OnBoardingScreenSkipButton(),
+        ],
+      ),
+    );
+  }
+}
+
+class OnBoardingScreenSkipButton extends StatelessWidget {
+  const OnBoardingScreenSkipButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: BlocBuilder<OnboardingCubit, OnboardingState>(
+        buildWhen: (previous, current) =>
+            previous.currentIndex != current.currentIndex,
+        builder: (context, state) {
+          final isLastPage = context.read<OnboardingCubit>().isLastPage;
+
+          return Visibility(
+            visible: !isLastPage,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: GestureDetector(
+                  onTap: () {
+                    context.read<OnboardingCubit>().skip();
+                  },
+                  child: const Text(
+                    'تخط',
+                    style: TextStyle(fontSize: 16, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

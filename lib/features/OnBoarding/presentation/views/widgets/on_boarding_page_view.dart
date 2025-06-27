@@ -7,12 +7,10 @@ class OnBoardingPageView extends StatelessWidget {
     super.key,
     required this.pageController,
     required this.onPageChanged,
-    required this.isLastPage,
   });
 
   final PageController pageController;
   final Function(int) onPageChanged;
-  final bool isLastPage;
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +18,21 @@ class OnBoardingPageView extends StatelessWidget {
       controller: pageController,
       onPageChanged: onPageChanged,
       reverse: true,
-      children: [
+      children: const [
         PageViewItem(
-          color: const Color(0XFFFCF4E3),
+          color: Color(0XFFFCF4E3),
           image: Assets.pageView1Image,
           bgImage: Assets.pageView1BgImage,
           subtitle:
               'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
-          title: const CustomPageView1Title(),
-          isLastPage: isLastPage,
+          title: CustomPageView1Title(),
         ),
         PageViewItem(
-          isLastPage: isLastPage,
           image: Assets.pageView2Image,
           bgImage: Assets.pageView2BgImage,
           subtitle:
               'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
-          title: const Text(
+          title: Text(
             'ابحث وتسوق',
             textAlign: TextAlign.center,
           ),
