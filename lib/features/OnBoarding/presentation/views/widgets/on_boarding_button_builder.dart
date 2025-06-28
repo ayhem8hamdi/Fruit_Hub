@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
+import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/on_boarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,11 +34,7 @@ class OnBoardingButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: 43,
-        ),
+        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 43, top: 29),
         decoration: BoxDecoration(
           color: isActive ? AppColors.kPrimaryColor : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
@@ -46,9 +43,9 @@ class OnBoardingButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 19),
           child: Text('ابدأ الآن',
-              style: TextStyle(
-                color: isActive ? Colors.white : Colors.transparent,
-              )),
+              style: isActive
+                  ? AppStyles.styleBold16
+                  : AppStyles.styleBold16.copyWith(color: Colors.transparent)),
         ),
       ),
     );

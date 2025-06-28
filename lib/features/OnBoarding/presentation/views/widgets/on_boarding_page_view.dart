@@ -1,4 +1,6 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
+import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
+import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/page_view_item.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +20,8 @@ class OnBoardingPageView extends StatelessWidget {
       controller: pageController,
       onPageChanged: onPageChanged,
       reverse: true,
-      children: const [
-        PageViewItem(
+      children: [
+        const PageViewItem(
           color: Color(0XFFFCF4E3),
           image: Assets.pageView1Image,
           bgImage: Assets.pageView1BgImage,
@@ -35,6 +37,7 @@ class OnBoardingPageView extends StatelessWidget {
           title: Text(
             'ابحث وتسوق',
             textAlign: TextAlign.center,
+            style: AppStyles.styleBold23,
           ),
         ),
       ],
@@ -47,12 +50,20 @@ class CustomPageView1Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('مرحبًا بك في'),
-        Text('HUB'),
-        Text('Fruit'),
+        Text(
+          ' مرحبًا بك في ',
+          style: AppStyles.styleBold23,
+        ),
+        Text('HUB',
+            style:
+                AppStyles.styleBold23.copyWith(color: const Color(0XFFF4A91F))),
+        Text(
+          'Fruit',
+          style: AppStyles.styleBold23.copyWith(color: AppColors.kPrimaryColor),
+        ),
       ],
     );
   }

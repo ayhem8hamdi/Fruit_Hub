@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/ob_boarding_states.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/on_boarding_cubit.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,11 @@ class OnBoardingScreenSkipButton extends StatelessWidget {
                   onTap: () {
                     context.read<OnboardingCubit>().skip();
                   },
-                  child: const Text(
+                  child: Text(
                     'تخط',
-                    style: TextStyle(fontSize: 16, color: Colors.black),
+                    style: AppStyles.styleBold13.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0XFF949D9E)),
                   ),
                 ),
               ),
