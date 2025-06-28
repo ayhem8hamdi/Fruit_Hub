@@ -1,6 +1,9 @@
+import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/services/shared_prefs.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/ob_boarding_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   final PageController pageController = PageController();
@@ -33,6 +36,11 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       curve: Curves.easeInOut,
     );
     emit(OnboardingState(lastPageIndex));
+  }
+
+  void navigate() {
+    SharedPrefsSingelton.setBool('isOnBoardingSeen', true);
+    Get.toNamed(AppRouter.homeScreen);
   }
 
   @override

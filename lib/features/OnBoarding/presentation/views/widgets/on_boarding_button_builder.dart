@@ -1,6 +1,5 @@
-import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
-import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/on_boarding_cubit.dart';
+import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,40 +13,11 @@ class OnBoardingButtonBuilder extends StatelessWidget {
 
     return OnBoardingButton(
       isActive: isLastPage,
-      onTap: isLastPage ? () {} : null,
-    );
-  }
-}
-
-class OnBoardingButton extends StatelessWidget {
-  final bool isActive;
-  final VoidCallback? onTap;
-
-  const OnBoardingButton({
-    super.key,
-    required this.isActive,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 43, top: 29),
-        decoration: BoxDecoration(
-          color: isActive ? AppColors.kPrimaryColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 19),
-          child: Text('ابدأ الآن',
-              style: isActive
-                  ? AppStyles.styleBold16
-                  : AppStyles.styleBold16.copyWith(color: Colors.transparent)),
-        ),
-      ),
+      onTap: isLastPage
+          ? () {
+              cubit.navigate();
+            }
+          : null,
     );
   }
 }

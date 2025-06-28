@@ -1,5 +1,6 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/services/shared_prefs.dart';
 import 'package:advanced_ecommerce/features/Splash/presentation/views/widgets/fade_animated_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,8 +17,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 3900),
-        () => Get.offNamed(AppRouter.onBoardingScreen));
+    navigationHandler();
   }
 
   @override
@@ -28,17 +28,13 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // The upper plant SVG is placed in the top left of the column.
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SvgPicture.asset(Assets.splashUpperPlant),
               ],
             ),
-            // The logo SVG is placed in the middle of the column.
             SvgPicture.asset(Assets.logo),
-            // The bottom section SVG is placed in the bottom of the column
-            // and is set to fill the available space.
             SvgPicture.asset(
               Assets.splashBottomSection,
               fit: BoxFit.fill,
@@ -47,5 +43,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         ),
       ),
     );
+  }
+
+  void navigationHandler() {
+    bool isOnBoardingSeen = SharedPrefsSingelton.getBool('isOnBoardingSeen');
+    isOnBoardingSeen == false
+        ? Future.delayed(const Duration(milliseconds: 3900),
+            () => Get.offNamed(AppRouter.onBoardingScreen))
+        : Future.delayed(const Duration(milliseconds: 3900),
+            () => Get.offNamed(AppRouter.homeScreen));
   }
 }
