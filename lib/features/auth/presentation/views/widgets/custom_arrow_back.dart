@@ -10,12 +10,9 @@ class AuthAppBarCustomIcon extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: GestureDetector(
-        onTap: onTap,
-        child: SvgPicture.asset(Assets.arrowBackIcon),
-      ),
+    return GestureDetector(
+      onTap: onTap,
+      child: SvgPicture.asset(Assets.arrowBackIcon),
     );
   }
 }
