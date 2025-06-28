@@ -40,7 +40,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   void navigate() {
     SharedPrefsSingelton.setBool('isOnBoardingSeen', true);
-    Get.toNamed(AppRouter.homeScreen);
+    Get.toNamed(AppRouter.loginScreen);
   }
 
   @override

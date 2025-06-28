@@ -9,4 +9,5 @@ abstract class Assets {
       'assets/images/page_view1_bg_image.svg';
   static const String pageView2BgImage =
       'assets/images/page_view2_bg_image.svg';
+  static const String arrowBackIcon = 'assets/images/arrowBack.svg';
 }

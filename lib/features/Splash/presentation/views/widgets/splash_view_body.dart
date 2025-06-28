@@ -51,6 +51,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         ? Future.delayed(const Duration(milliseconds: 3900),
             () => Get.offNamed(AppRouter.onBoardingScreen))
         : Future.delayed(const Duration(milliseconds: 3900),
-            () => Get.offNamed(AppRouter.homeScreen));
+            () => Get.offNamed(AppRouter.loginScreen));
   }
 }
