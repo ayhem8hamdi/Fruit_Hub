@@ -37,7 +37,7 @@ class OnBoardingPageView extends StatelessWidget {
           title: Text(
             'ابحث وتسوق',
             textAlign: TextAlign.center,
-            style: AppStyles.styleBold23,
+            style: AppStyles.styleBold23(context),
           ),
         ),
       ],
@@ -55,14 +55,15 @@ class CustomPageView1Title extends StatelessWidget {
       children: [
         Text(
           ' مرحبًا بك في ',
-          style: AppStyles.styleBold23,
+          style: AppStyles.styleBold23(context),
         ),
         Text('HUB',
-            style:
-                AppStyles.styleBold23.copyWith(color: const Color(0XFFF4A91F))),
+            style: AppStyles.styleBold23(context)
+                .copyWith(color: const Color(0XFFF4A91F))),
         Text(
           'Fruit',
-          style: AppStyles.styleBold23.copyWith(color: AppColors.kPrimaryColor),
+          style: AppStyles.styleBold23(context)
+              .copyWith(color: AppColors.kPrimaryColor),
         ),
       ],
     );

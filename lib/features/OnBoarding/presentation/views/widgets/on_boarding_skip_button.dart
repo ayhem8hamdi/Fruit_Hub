@@ -30,7 +30,7 @@ class OnBoardingScreenSkipButton extends StatelessWidget {
                   },
                   child: Text(
                     'تخط',
-                    style: AppStyles.styleBold13.copyWith(
+                    style: AppStyles.styleBold13(context).copyWith(
                         fontWeight: FontWeight.w400,
                         color: const Color(0XFF949D9E)),
                   ),

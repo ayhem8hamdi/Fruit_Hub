@@ -25,10 +25,12 @@ class OnBoardingButton extends StatelessWidget {
         alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 19),
-          child: Text('ابدأ الآن',
-              style: isActive
-                  ? AppStyles.styleBold16
-                  : AppStyles.styleBold16.copyWith(color: Colors.transparent)),
+          child: Text(
+            'ابدأ الآن',
+            style: AppStyles.styleBold16(context).copyWith(
+              color: isActive ? Colors.white : Colors.transparent,
+            ),
+          ),
         ),
       ),
     );

@@ -23,7 +23,7 @@ class OnBoardingViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 28,
+            height: 38,
           ),
           Column(
             mainAxisSize: MainAxisSize.min,

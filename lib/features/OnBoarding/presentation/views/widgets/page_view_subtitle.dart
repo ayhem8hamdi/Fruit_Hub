@@ -10,7 +10,7 @@ class PageViewItemSubtitle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 37),
       child: Text(
         subtitle,
-        style: AppStyles.styleSemiBold13,
+        style: AppStyles.styleSemiBold13(context),
         textAlign: TextAlign.center,
       ),
     );

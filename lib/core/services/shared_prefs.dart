@@ -14,4 +14,8 @@ abstract class SharedPrefsSingelton {
   static bool getBool(String key) {
     return _instance.getBool(key) ?? false;
   }
+
+  static Future<void> remove(String key) async {
+    await _instance.remove(key);
+  }
 }
