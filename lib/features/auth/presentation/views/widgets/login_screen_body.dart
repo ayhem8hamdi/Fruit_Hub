@@ -3,6 +3,7 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/crea
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_auth_appbar.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/or_section.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/password_forgot_link.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -32,7 +33,9 @@ class LoginScreenBody extends StatelessWidget {
               Gap(37),
               OnBoardingButton(isActive: true, text: 'تسجيل دخول'),
               Gap(33),
-              CreateAccountRow()
+              CreateAccountRow(),
+              Gap(36),
+              OrSection()
             ],
           ),
         ),
