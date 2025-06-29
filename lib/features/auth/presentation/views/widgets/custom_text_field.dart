@@ -13,15 +13,17 @@ class CustomBorderTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       style: AppStyles.styleSemiBold16(context)
-          .copyWith(color: const Color(0XFF0C0D0D)),
+          .copyWith(color: const Color(0xFF0C0D0D)),
       decoration: InputDecoration(
         isDense: true,
         hintText: hintText,
         hintStyle: AppStyles.styleBold13(context),
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 20,
+          vertical: 22,
           horizontal: 20,
         ),
+        filled: true,
+        fillColor: const Color(0xFFF9FAFA),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Color(0xFFE6E9EA),

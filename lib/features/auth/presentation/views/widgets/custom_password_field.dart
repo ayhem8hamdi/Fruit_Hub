@@ -44,9 +44,11 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
         hintText: widget.hintText,
         hintStyle: AppStyles.styleBold13(context),
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 20,
+          vertical: 22,
           horizontal: 20,
         ),
+        filled: true,
+        fillColor: const Color(0xFFF9FAFA),
         suffixIcon: IconButton(
           icon: Padding(
             padding: const EdgeInsets.only(left: 15),
