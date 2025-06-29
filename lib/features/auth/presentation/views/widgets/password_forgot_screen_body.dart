@@ -20,7 +20,9 @@ class PasswordForgotScreenBody extends StatelessWidget {
               title: 'نسيان كلمة المرور',
             ),
             Gap(28),
-            ForgotPasswordText(),
+            ForgotPasswordText(
+              text: 'لا تقلق ، ما عليك سوى كتابة رقم هاتفك وسنرسل رمز التحقق .',
+            ),
             Gap(31),
             ForgotPasswordForm()
           ],
@@ -31,12 +33,12 @@ class PasswordForgotScreenBody extends StatelessWidget {
 }
 
 class ForgotPasswordText extends StatelessWidget {
-  const ForgotPasswordText({super.key});
-
+  const ForgotPasswordText({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
-      'لا تقلق ، ما عليك سوى كتابة رقم هاتفك وسنرسل رمز التحقق .',
+      text,
       style: AppStyles.styleSemiBold16(context).copyWith(
           color: const Color(0XFF616A6B).withOpacity(0.9), height: 1.4),
     );
