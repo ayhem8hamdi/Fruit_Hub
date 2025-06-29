@@ -1,6 +1,7 @@
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_auth_appbar.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/password_forgot_link.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -15,6 +16,7 @@ class LoginScreenBody extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CustomAuthAppbar(),
               Gap(28),
@@ -22,7 +24,10 @@ class LoginScreenBody extends StatelessWidget {
               Gap(16),
               CustomPasswordTextField(
                 hintText: 'كلمة المرور',
-              )
+              ),
+              Gap(20),
+              PasswordForgotNavLink(),
+              Gap(40),
             ],
           ),
         ),

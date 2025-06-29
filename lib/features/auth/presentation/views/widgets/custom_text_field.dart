@@ -19,7 +19,7 @@ class CustomBorderTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: AppStyles.styleBold13(context),
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 21,
+          vertical: 20,
           horizontal: 20,
         ),
         enabledBorder: OutlineInputBorder(
