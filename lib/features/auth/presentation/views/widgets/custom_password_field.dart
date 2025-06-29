@@ -1,12 +1,17 @@
+import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 
 class CustomPasswordTextField extends StatefulWidget {
   final String hintText;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   const CustomPasswordTextField({
     super.key,
     required this.hintText,
+    required this.controller,
+    this.validator,
   });
 
   @override
@@ -23,22 +28,14 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
     });
   }
 
-  OutlineInputBorder _customBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(
-        color: Color(0xFFE6E9EA),
-        width: 1.0,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      controller: widget.controller,
+      validator: widget.validator,
       obscureText: _obscureText,
       style: AppStyles.styleSemiBold16(context)
-          .copyWith(color: const Color(0XFF0C0D0D)),
+          .copyWith(color: const Color(0xFF0C0D0D)),
       decoration: InputDecoration(
         isDense: true,
         hintText: widget.hintText,
@@ -59,8 +56,11 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
           ),
           onPressed: _toggleVisibility,
         ),
-        enabledBorder: _customBorder(),
-        focusedBorder: _customBorder(),
+        enabledBorder: MethodsHelper.enabledFocusedBorder(),
+        focusedBorder: MethodsHelper.enabledFocusedBorder(),
+        errorBorder: MethodsHelper.errorBorder(),
+        focusedErrorBorder: MethodsHelper.focusedErrorBorder(),
+        errorStyle: MethodsHelper.errorTextStyle(context),
       ),
     );
   }
