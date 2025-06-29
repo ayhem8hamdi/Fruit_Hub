@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class OnBoardingButton extends StatelessWidget {
   final bool isActive;
   final VoidCallback? onTap;
+  final String text;
 
   const OnBoardingButton({
     super.key,
     required this.isActive,
     this.onTap,
+    required this.text,
   });
 
   @override
@@ -17,16 +19,15 @@ class OnBoardingButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 43, top: 29),
         decoration: BoxDecoration(
           color: isActive ? AppColors.kPrimaryColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(18),
         ),
         alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 19),
           child: Text(
-            'ابدأ الآن',
+            text,
             style: AppStyles.styleBold16(context).copyWith(
               color: isActive ? Colors.white : Colors.transparent,
             ),

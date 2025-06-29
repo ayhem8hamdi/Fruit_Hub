@@ -11,13 +11,17 @@ class OnBoardingButtonBuilder extends StatelessWidget {
     final cubit = context.watch<OnboardingCubit>();
     final isLastPage = cubit.isLastPage;
 
-    return OnBoardingButton(
-      isActive: isLastPage,
-      onTap: isLastPage
-          ? () {
-              cubit.navigate();
-            }
-          : null,
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 43, top: 29),
+      child: OnBoardingButton(
+        text: 'ابدأ الآن',
+        isActive: isLastPage,
+        onTap: isLastPage
+            ? () {
+                cubit.navigate();
+              }
+            : null,
+      ),
     );
   }
 }
