@@ -3,8 +3,8 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/cust
 import 'package:flutter/material.dart';
 
 class CustomAuthAppbar extends StatelessWidget {
-  const CustomAuthAppbar({super.key});
-
+  const CustomAuthAppbar({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,7 +14,7 @@ class CustomAuthAppbar extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Text(
-              'تسجيل دخول',
+              title,
               style: AppStyles.styleBold19(context),
             ),
           ),

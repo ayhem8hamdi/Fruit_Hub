@@ -20,7 +20,9 @@ class LoginScreenBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CustomAuthAppbar(),
+                CustomAuthAppbar(
+                  title: 'تسجيل دخول',
+                ),
                 Gap(28),
                 LoginTextFieldsForm(),
                 Gap(33),

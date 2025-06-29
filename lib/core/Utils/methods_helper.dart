@@ -2,6 +2,16 @@ import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 abstract class MethodsHelper {
+  static String? validateFullName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'يرجى إدخال الاسم الكامل';
+    }
+    if (value.trim().length < 3) {
+      return 'يجب أن يحتوي الاسم الكامل على 3 أحرف على الأقل';
+    }
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'يرجى إدخال البريد الإلكتروني';
