@@ -65,4 +65,28 @@ abstract class MethodsHelper {
   static TextStyle errorTextStyle(BuildContext context) {
     return AppStyles.styleBold13(context).copyWith(color: Colors.green);
   }
+
+  static void handleSignUpSubmission({
+    required BuildContext context,
+    required GlobalKey<FormState> formKey,
+    required bool acceptedTerms,
+    required VoidCallback onSuccess,
+  }) {
+    final isFormValid = formKey.currentState?.validate() ?? false;
+
+    if (!isFormValid) return;
+
+    if (!acceptedTerms) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('يرجى الموافقة على الشروط والأحكام أولاً'),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
+      return;
+    }
+
+    // If all checks pass, proceed
+    onSuccess();
+  }
 }
