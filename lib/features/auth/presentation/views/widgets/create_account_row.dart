@@ -1,7 +1,5 @@
-import 'package:advanced_ecommerce/core/Utils/app_router.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CreateAccountRow extends StatelessWidget {
   const CreateAccountRow(

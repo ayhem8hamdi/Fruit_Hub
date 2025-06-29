@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
+import 'package:advanced_ecommerce/core/Utils/ui_errors_handler.dart';
 import 'package:flutter/material.dart';
 
 abstract class MethodsHelper {
@@ -77,16 +78,10 @@ abstract class MethodsHelper {
     if (!isFormValid) return;
 
     if (!acceptedTerms) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('يرجى الموافقة على الشروط والأحكام أولاً'),
-          backgroundColor: Colors.redAccent,
-        ),
-      );
+      UiHandler.showFlushBar(
+          context, 'يرجى الموافقة على الشروط والأحكام أولاً');
       return;
     }
-
-    // If all checks pass, proceed
     onSuccess();
   }
 }
