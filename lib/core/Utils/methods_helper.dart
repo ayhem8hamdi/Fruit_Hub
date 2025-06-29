@@ -84,4 +84,14 @@ abstract class MethodsHelper {
     }
     onSuccess();
   }
+
+  static String? validatePhoneNumber(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'يرجى إدخال رقم الهاتف';
+    }
+    if (value.trim().length != 8) {
+      return 'يجب أن يحتوي رقم الهاتف على 8 أرقام';
+    }
+    return null;
+  }
 }

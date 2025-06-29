@@ -22,9 +22,12 @@ class FruitHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
+      locale: const Locale('ar'),
       getPages: AppRouter.getViews(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+      ),
     );
   }
 }

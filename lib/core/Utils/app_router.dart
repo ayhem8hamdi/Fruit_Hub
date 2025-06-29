@@ -1,6 +1,7 @@
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/on_boarding_view.dart';
 import 'package:advanced_ecommerce/features/Splash/presentation/views/splash_view.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/login_screen.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/password_forgot_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/home_screen.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ abstract class AppRouter {
   static String homeScreen = "/homeScreen";
   static String loginScreen = "/loginScreen";
   static String signUpScreen = "/loginScreen/signUpScreen";
+  static String passwordForgot = "/loginScreen/passwordForgot";
   static List<GetPage<dynamic>>? getViews() {
     return [
       GetPage(
@@ -32,6 +34,10 @@ abstract class AppRouter {
       GetPage(
         name: signUpScreen,
         page: () => const SignUpScreen(),
+      ),
+      GetPage(
+        name: passwordForgot,
+        page: () => const PasswordForgotScreen(),
       ),
     ];
   }

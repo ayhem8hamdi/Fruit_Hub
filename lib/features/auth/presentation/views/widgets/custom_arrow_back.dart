@@ -5,13 +5,16 @@ import 'package:flutter_svg/svg.dart';
 class AuthAppBarCustomIcon extends StatelessWidget {
   const AuthAppBarCustomIcon({
     super.key,
-    this.onTap,
   });
-  final void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
+      },
       child: SvgPicture.asset(Assets.arrowBackIcon),
     );
   }
