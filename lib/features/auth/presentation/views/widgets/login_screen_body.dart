@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/create_account_row.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_auth_appbar.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
@@ -29,7 +30,9 @@ class LoginScreenBody extends StatelessWidget {
               Gap(20),
               PasswordForgotNavLink(),
               Gap(37),
-              OnBoardingButton(isActive: true, text: 'تسجيل دخول')
+              OnBoardingButton(isActive: true, text: 'تسجيل دخول'),
+              Gap(33),
+              CreateAccountRow()
             ],
           ),
         ),
