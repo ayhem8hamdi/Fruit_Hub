@@ -67,6 +67,38 @@ abstract class MethodsHelper {
     return AppStyles.styleBold13(context).copyWith(color: Colors.green);
   }
 
+  static OutlineInputBorder orangeFocusedBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: Color(0XFFF4A91F), width: 1.8),
+    );
+  }
+
+  static TextStyle codeTextStyle({required bool isFocused}) {
+    return TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: isFocused ? const Color(0XFFF4A91F) : Colors.black,
+    );
+  }
+
+  static String? validateSingleDigit(String? value) {
+    if (value == null || value.trim().isEmpty || value.trim().length != 1) {
+      return '';
+    }
+    return null;
+  }
+
+  static String? validatePhoneNumber(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'يرجى إدخال رقم الهاتف';
+    }
+    if (value.trim().length != 8) {
+      return 'يجب أن يحتوي رقم الهاتف على 8 أرقام';
+    }
+    return null;
+  }
+
   static void handleSignUpSubmission({
     required BuildContext context,
     required GlobalKey<FormState> formKey,
@@ -83,15 +115,5 @@ abstract class MethodsHelper {
       return;
     }
     onSuccess();
-  }
-
-  static String? validatePhoneNumber(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'يرجى إدخال رقم الهاتف';
-    }
-    if (value.trim().length != 8) {
-      return 'يجب أن يحتوي رقم الهاتف على 8 أرقام';
-    }
-    return null;
   }
 }

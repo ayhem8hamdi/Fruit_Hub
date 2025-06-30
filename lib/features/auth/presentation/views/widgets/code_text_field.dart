@@ -7,7 +7,7 @@ class CodeTextField extends StatefulWidget {
     super.key,
     required this.controller,
     required this.focusNode,
-    required this.nextFocusNode,
+    this.nextFocusNode,
   });
 
   final TextEditingController controller;
@@ -19,18 +19,30 @@ class CodeTextField extends StatefulWidget {
 }
 
 class _CodeTextFieldState extends State<CodeTextField> {
-  late bool isFocused;
+  bool get _isFocused => widget.focusNode.hasFocus;
 
   @override
   void initState() {
     super.initState();
-    isFocused = false;
+    widget.focusNode.addListener(_handleFocusChange);
+  }
 
-    widget.focusNode.addListener(() {
-      setState(() {
-        isFocused = widget.focusNode.hasFocus;
-      });
-    });
+  @override
+  void dispose() {
+    widget.focusNode.removeListener(_handleFocusChange);
+    super.dispose();
+  }
+
+  void _handleFocusChange() => setState(() {});
+
+  void _handleInput(String value) {
+    if (value.length != 1) return;
+
+    if (widget.nextFocusNode != null) {
+      FocusScope.of(context).requestFocus(widget.nextFocusNode);
+    } else {
+      widget.focusNode.unfocus();
+    }
   }
 
   @override
@@ -40,51 +52,25 @@ class _CodeTextFieldState extends State<CodeTextField> {
       focusNode: widget.focusNode,
       keyboardType: TextInputType.number,
       textAlign: TextAlign.center,
+      textDirection: TextDirection.ltr,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(1),
       ],
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: isFocused ? Colors.orange : Colors.black,
-      ),
-      onChanged: (value) {
-        if (value.length == 1) {
-          if (widget.nextFocusNode != null) {
-            // RTL: move focus to the previous node
-            FocusScope.of(context).requestFocus(widget.nextFocusNode);
-          } else {
-            // Last field — unfocus
-            widget.focusNode.unfocus();
-          }
-        }
-      },
+      style: MethodsHelper.codeTextStyle(isFocused: _isFocused),
+      onChanged: _handleInput,
       decoration: InputDecoration(
         isDense: true,
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
-        hintText: '',
-        hintStyle: const TextStyle(color: Colors.grey),
         filled: true,
         fillColor: const Color(0xFFF9FAFA),
         enabledBorder: MethodsHelper.enabledFocusedBorder(),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Colors.orange, width: 1.8),
-        ),
+        focusedBorder: MethodsHelper.orangeFocusedBorder(),
         errorBorder: MethodsHelper.errorBorder(),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Colors.orange, width: 1.8),
-        ),
+        focusedErrorBorder: MethodsHelper.orangeFocusedBorder(),
         errorStyle: MethodsHelper.errorTextStyle(context),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty || value.length != 1) {
-          return '';
-        }
-        return null;
-      },
+      validator: MethodsHelper.validateSingleDigit,
     );
   }
 }
