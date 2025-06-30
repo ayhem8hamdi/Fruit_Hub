@@ -116,24 +116,4 @@ abstract class MethodsHelper {
     }
     onSuccess();
   }
-
-  static OutlineInputBorder errorCodeBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(
-        color: Colors.transparent,
-        width: 1.4,
-      ),
-    );
-  }
-
-  static OutlineInputBorder focusedErrorCodeBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(
-        color: Colors.transparent,
-        width: 1.4,
-      ),
-    );
-  }
 }
