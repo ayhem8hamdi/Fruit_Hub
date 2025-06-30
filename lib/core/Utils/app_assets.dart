@@ -13,4 +13,6 @@ abstract class Assets {
   static const String appelIcon = 'assets/images/apple.svg';
   static const String googleIcon = 'assets/images/google.svg';
   static const String facebookIcon = 'assets/images/facebook.svg';
+  static const String passwordChange =
+      'assets/images/password_successfully_changed.svg';
 }

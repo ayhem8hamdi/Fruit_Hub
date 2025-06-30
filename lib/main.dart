@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefsSingelton.init();
-
+  await SharedPrefsSingelton.remove('isOnBoardingSeen');
   runApp(
     DevicePreview(
       enabled: true,

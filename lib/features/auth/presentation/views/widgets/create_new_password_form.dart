@@ -1,6 +1,7 @@
 import 'dart:developer';
-
+import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
+import 'package:advanced_ecommerce/core/Utils/ui_errors_handler.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,9 @@ class _CreateNewPasswordFormState extends State<CreateNewPasswordForm> {
     if (_formKey.currentState?.validate() ?? false) {
       log('New password: ${_passwordController.text}');
       //trigger the cubit here
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('تم تحديث كلمة المرور بنجاح')),
-      );
+      UiHandler.showSuccessDialog(context,
+          svgAssetPath: Assets.passwordChange,
+          message: 'تم تغيير الباسورد بنجاح');
     }
   }
 
