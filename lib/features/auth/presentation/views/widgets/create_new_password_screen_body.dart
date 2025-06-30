@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/create_new_password_form.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_auth_appbar.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/password_forgot_screen_body.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,9 @@ class CreateNewPasswordScreenBody extends StatelessWidget {
             Gap(28),
             ForgotPasswordText(
                 isCreateNewPasswordScreen: 'yes',
-                text: 'قم بإنشاء كلمة مرور جديدة لتسجيل الدخول')
+                text: 'قم بإنشاء كلمة مرور جديدة لتسجيل الدخول'),
+            Gap(36),
+            CreateNewPasswordForm()
           ],
         ),
       ),

@@ -116,4 +116,14 @@ abstract class MethodsHelper {
     }
     onSuccess();
   }
+
+  static String? validateConfirmPassword(String? value, String password) {
+    if (value == null || value.isEmpty) {
+      return 'يرجى إعادة كتابة كلمة المرور';
+    }
+    if (value != password) {
+      return 'كلمات المرور غير متطابقة';
+    }
+    return null;
+  }
 }
