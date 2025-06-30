@@ -9,7 +9,7 @@ class PasswordForgotNavLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(AppRouter.passwordForgot),
+      onTap: () => Get.toNamed(AppRouter.passwordForgotScreen),
       child: Padding(
         padding: const EdgeInsets.only(left: 5),
         child: Text(

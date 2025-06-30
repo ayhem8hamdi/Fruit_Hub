@@ -33,14 +33,19 @@ class PasswordForgotScreenBody extends StatelessWidget {
 }
 
 class ForgotPasswordText extends StatelessWidget {
-  const ForgotPasswordText({super.key, required this.text});
+  const ForgotPasswordText(
+      {super.key, required this.text, this.isCreateNewPasswordScreen});
   final String text;
+  final String? isCreateNewPasswordScreen;
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: AppStyles.styleSemiBold16(context).copyWith(
-          color: const Color(0XFF616A6B).withOpacity(0.9), height: 1.4),
+          color: isCreateNewPasswordScreen == 'yes'
+              ? const Color(0XFF0C0D0D)
+              : const Color(0XFF616A6B).withOpacity(0.9),
+          height: 1.4),
     );
   }
 }

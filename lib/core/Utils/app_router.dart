@@ -1,5 +1,6 @@
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/on_boarding_view.dart';
 import 'package:advanced_ecommerce/features/Splash/presentation/views/splash_view.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/create_new_password_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/login_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/password_forgot_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/recover_password_screen.dart';
@@ -13,9 +14,11 @@ abstract class AppRouter {
   static String homeScreen = "/homeScreen";
   static String loginScreen = "/loginScreen";
   static String signUpScreen = "/loginScreen/signUpScreen";
-  static String passwordForgot = "/loginScreen/passwordForgot";
+  static String passwordForgotScreen = "/loginScreen/passwordForgot";
   static String recoverPasswordScreen =
       "/loginScreen/passwordForgot/recoverPasswordScreen";
+  static String createNewPasswordScreen =
+      "/loginScreen/passwordForgot/recoverPasswordScreen/createNewPasswordScreen";
   static List<GetPage<dynamic>>? getViews() {
     return [
       GetPage(
@@ -39,12 +42,16 @@ abstract class AppRouter {
         page: () => const SignUpScreen(),
       ),
       GetPage(
-        name: passwordForgot,
+        name: passwordForgotScreen,
         page: () => const PasswordForgotScreen(),
       ),
       GetPage(
         name: recoverPasswordScreen,
         page: () => const RecoverPasswordScreen(),
+      ),
+      GetPage(
+        name: createNewPasswordScreen,
+        page: () => const CreateNewPasswordScreen(),
       ),
     ];
   }

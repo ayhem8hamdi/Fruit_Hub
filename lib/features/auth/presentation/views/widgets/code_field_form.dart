@@ -1,7 +1,9 @@
+import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/code_text_field_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
-import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/code_text_field.dart';
+import 'package:get/get.dart';
 
 class CodeFieldsForm extends StatefulWidget {
   const CodeFieldsForm({
@@ -47,6 +49,7 @@ class _CodeFieldsFormState extends State<CodeFieldsForm> {
       debugPrint('Entered Code: $code');
       // we could call cubit function here
       widget.onSubmit?.call();
+      Get.toNamed(AppRouter.createNewPasswordScreen);
     }
   }
 
@@ -64,13 +67,10 @@ class _CodeFieldsFormState extends State<CodeFieldsForm> {
                   return const SizedBox(width: 16);
                 }
                 final index = i ~/ 2;
-                return Expanded(
-                  child: CodeTextField(
-                    controller: _controllers[index],
-                    focusNode: _focusNodes[index],
-                    nextFocusNode: index > 0 ? _focusNodes[index - 1] : null,
-                  ),
-                );
+                return CodeTextFieldListItem(
+                    controllers: _controllers,
+                    index: index,
+                    focusNodes: _focusNodes);
               }),
             ),
           ),
@@ -78,7 +78,7 @@ class _CodeFieldsFormState extends State<CodeFieldsForm> {
           OnBoardingButton(
             isActive: true,
             onTap: _onSubmit,
-            text: 'تحقق',
+            text: 'تحقق من الرمز',
           ),
         ],
       ),
