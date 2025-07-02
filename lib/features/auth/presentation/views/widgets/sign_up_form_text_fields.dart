@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/accept_terms_widget.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/number_custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
@@ -18,6 +21,7 @@ class _SignUpTextFieldsFormState extends State<SignUpTextFieldsForm> {
   final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
 
   bool _acceptedTerms = false;
 
@@ -26,6 +30,7 @@ class _SignUpTextFieldsFormState extends State<SignUpTextFieldsForm> {
     _fullNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 
@@ -35,7 +40,9 @@ class _SignUpTextFieldsFormState extends State<SignUpTextFieldsForm> {
       formKey: _formKey,
       acceptedTerms: _acceptedTerms,
       onSuccess: () {
-        // Put sign-up logic here or call cubit/Bloc
+        final phoneNumber = _phoneController.text.trim();
+        log(phoneNumber);
+        //call cubit here
       },
     );
   }
@@ -58,6 +65,11 @@ class _SignUpTextFieldsFormState extends State<SignUpTextFieldsForm> {
             controller: _emailController,
             validator: MethodsHelper.validateEmail,
           ),
+          const Gap(16),
+          CustomNumberTextField(
+              hintText: 'رقم الهاتف',
+              validator: MethodsHelper.validatePhoneNumber,
+              controller: _phoneController),
           const Gap(16),
           CustomPasswordTextField(
             hintText: 'كلمة المرور',

@@ -21,7 +21,9 @@ class CustomNumberTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       keyboardType: TextInputType.number,
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+      ],
       style: AppStyles.styleSemiBold16(context)
           .copyWith(color: const Color(0xFF0C0D0D)),
       decoration: InputDecoration(

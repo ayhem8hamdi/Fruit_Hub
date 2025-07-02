@@ -1,6 +1,6 @@
 import 'package:advanced_ecommerce/core/Utils/app_router.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
-import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/number_custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -41,11 +41,10 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          CustomBorderTextField(
-            hintText: 'رقم الهاتف',
-            controller: _phoneController,
-            validator: MethodsHelper.validatePhoneNumber,
-          ),
+          CustomNumberTextField(
+              hintText: 'رقم الهاتف',
+              validator: MethodsHelper.validatePhoneNumber,
+              controller: _phoneController),
           const Gap(37),
           OnBoardingButton(
             isActive: true,
