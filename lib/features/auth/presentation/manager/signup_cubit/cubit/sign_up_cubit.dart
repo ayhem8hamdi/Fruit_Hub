@@ -1,12 +1,12 @@
 import 'package:advanced_ecommerce/core/errors/failure.dart';
-import 'package:advanced_ecommerce/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:advanced_ecommerce/features/auth/domain/entities/user_entity.dart';
+import 'package:advanced_ecommerce/features/auth/domain/repos/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit(this.authRepoImpl) : super(SignUpInitial());
-  final AuthRepoImpl authRepoImpl;
+  SignUpCubit(this.authRepo) : super(SignUpInitial());
+  final AuthRepo authRepo;
 
   Future<void> createUserWithEmailAndPassword({
     required String email,
@@ -15,7 +15,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String phoneNumber,
   }) async {
     emit(SignUpLoading());
-    final result = await authRepoImpl.createUserWithEmailAndPassword(
+    final result = await authRepo.createUserWithEmailAndPassword(
         email: email,
         password: password,
         fullName: fullName,
