@@ -120,7 +120,6 @@ class UnknownFailure extends Failure {
   UnknownFailure({required super.message, required super.code});
 }
 
-// Custom exception classes (if you use them in your app)
 class AuthenticationException implements Exception {
   final String message;
   AuthenticationException(this.message);
