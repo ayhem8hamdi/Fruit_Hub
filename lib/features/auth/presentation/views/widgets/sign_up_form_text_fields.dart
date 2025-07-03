@@ -1,20 +1,17 @@
 import 'dart:developer';
-
-import 'package:advanced_ecommerce/core/Utils/ui_errors_handler.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/manager/signup_cubit/cubit/sign_up_cubit.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/accept_terms_widget.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/number_custom_text_field.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/sign_up_button_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
-import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 
 class SignUpTextFieldsForm extends StatefulWidget {
   const SignUpTextFieldsForm({super.key});
-
   @override
   State<SignUpTextFieldsForm> createState() => _SignUpTextFieldsFormState();
 }
@@ -25,9 +22,7 @@ class _SignUpTextFieldsFormState extends State<SignUpTextFieldsForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _phoneController = TextEditingController();
-
   bool _acceptedTerms = false;
-
   @override
   void dispose() {
     _fullNameController.dispose();
@@ -97,56 +92,11 @@ class _SignUpTextFieldsFormState extends State<SignUpTextFieldsForm> {
             },
           ),
           const Gap(37),
-          BlocBuilder<SignUpCubit, SignUpState>(
-            builder: (context, state) {
-              return OnBoardingButton(
-                isActive: true,
-                text: 'إنشاء حساب',
-                onTap: _onSignUpPressed,
-              );
-            },
+          SignUpButtonBlocBuilder(
+            onSignUpPressed: _onSignUpPressed,
           )
         ],
       ),
-    );
-  }
-}
-
-class SignUpButtonBlocBuilder extends StatelessWidget {
-  const SignUpButtonBlocBuilder({super.key, this.onSignUpPressed});
-  final void Function()? onSignUpPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
-      builder: (context, state) {
-        if (state is SignUpLoading) {
-          return const OnBoardingButton(
-            widget: Center(child: CircularProgressIndicator()),
-          );
-        } else if (state is SignUpSucces) {
-          return OnBoardingButton(
-            isActive: true,
-            text: 'إنشاء حساب',
-            onTap: onSignUpPressed,
-          );
-        } else if (state is SignUpFailed) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            UiHandler.showFlushBar(context, state.failure.message);
-          });
-          return OnBoardingButton(
-            isActive: true,
-            text: 'إنشاء حساب',
-            onTap: onSignUpPressed,
-          );
-        } else {
-          return OnBoardingButton(
-            isActive: true,
-            text: 'إنشاء حساب',
-            onTap: onSignUpPressed,
-          );
-        }
-      },
     );
   }
 }

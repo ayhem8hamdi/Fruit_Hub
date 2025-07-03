@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
@@ -6,17 +7,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 abstract class UiHandler {
   static const Color primaryColor = Color(0xFF1B5E37);
 
-  static void showFlushBar(BuildContext context, String message,
-      {bool isError = true}) {
+  static Future<void> showFlushBar(BuildContext context, String message,
+      {bool isError = true}) async {
     try {
-      Flushbar(
+      await Flushbar(
         message: message,
         margin: const EdgeInsets.all(16),
         borderRadius: BorderRadius.circular(16),
-        backgroundColor: isError ? primaryColor : Colors.green,
+        backgroundColor: primaryColor,
         duration: const Duration(seconds: 3),
         flushbarPosition: FlushbarPosition.BOTTOM,
-        animationDuration: const Duration(milliseconds: 500),
+        animationDuration: const Duration(milliseconds: 400),
         messageColor: Colors.white,
         icon: Icon(
           isError ? Icons.error_outline : Icons.check_circle_outline,
@@ -25,6 +26,34 @@ abstract class UiHandler {
       ).show(context);
     } catch (e) {
       debugPrint('Error showing Flushbar: $e');
+    }
+  }
+
+  static Future<void> showFlushBarThen(
+      BuildContext context, String message, VoidCallback afterDismissed,
+      {bool isError = true}) async {
+    try {
+      final flush = Flushbar(
+        message: message,
+        margin: const EdgeInsets.all(16),
+        borderRadius: BorderRadius.circular(16),
+        backgroundColor: AppColors.kPrimaryColor,
+        duration: const Duration(milliseconds: 700),
+        flushbarPosition: FlushbarPosition.BOTTOM,
+        animationDuration: const Duration(milliseconds: 300),
+        messageColor: Colors.white,
+        icon: Icon(
+          isError ? Icons.error_outline : Icons.check_circle_outline,
+          color: Colors.white,
+        ),
+      );
+
+      await flush.show(context);
+
+      // Call the callback after dismisal
+      afterDismissed();
+    } catch (e) {
+      debugPrint('Error showing Flushbar with callback: $e');
     }
   }
 
