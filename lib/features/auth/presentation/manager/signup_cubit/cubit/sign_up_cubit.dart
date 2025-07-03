@@ -1,9 +1,7 @@
 import 'package:advanced_ecommerce/core/errors/failure.dart';
 import 'package:advanced_ecommerce/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:advanced_ecommerce/features/auth/domain/entities/user_entity.dart';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
