@@ -7,18 +7,21 @@ class FireBaseAuthService {
 
   FireBaseAuthService(this._auth, this._firestore);
 
+  /// Registers a new user and saves additional data in Firestore
   Future<User> registerUser({
     required String email,
     required String password,
     required String fullName,
     required String phoneNumber,
   }) async {
-    UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+    final UserCredential userCredential =
+        await _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
 
     final uid = userCredential.user!.uid;
+
     await _firestore.collection('users').doc(uid).set({
       'email': email,
       'fullName': fullName,
@@ -33,7 +36,8 @@ class FireBaseAuthService {
     required String email,
     required String password,
   }) async {
-    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+    final UserCredential userCredential =
+        await _auth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
