@@ -62,4 +62,10 @@ class AuthRepoImpl implements AuthRepo {
       return Left(failure);
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginWithGoogle() {
+    // TODO: implement loginWithGoogle
+    throw UnimplementedError();
+  }
 }

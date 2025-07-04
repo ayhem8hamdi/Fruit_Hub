@@ -8,10 +8,7 @@ part 'social_media_auth_state.dart';
 class SocialMediaAuthCubit extends Cubit<SocialMediaAuthState> {
   SocialMediaAuthCubit(this.authRepo) : super(SocialMediaAuthInitial());
   final AuthRepo authRepo;
-  Future<void> loginUserWithEmailAndPassword({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> loginUserWithEmailAndPassword() async {
     emit(SocialMediaAuthLoading());
     final result = await authRepo.loginWithGoogle();
     result.fold(
