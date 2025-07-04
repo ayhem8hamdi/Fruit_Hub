@@ -28,4 +28,16 @@ class FireBaseAuthService {
 
     return userCredential.user!;
   }
+
+  Future<User> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    return userCredential.user!;
+  }
 }
