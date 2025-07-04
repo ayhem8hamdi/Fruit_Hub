@@ -47,10 +47,7 @@ abstract class UiHandler {
           color: Colors.white,
         ),
       );
-
       await flush.show(context);
-
-      // Call the callback after dismisal
       afterDismissed();
     } catch (e) {
       debugPrint('Error showing Flushbar with callback: $e');

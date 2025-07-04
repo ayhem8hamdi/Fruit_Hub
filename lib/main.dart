@@ -1,8 +1,10 @@
 import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/services/custom_bloc_observer_service.dart';
 import 'package:advanced_ecommerce/core/services/get_it_service.dart';
 import 'package:advanced_ecommerce/core/services/shared_prefs.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -14,6 +16,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setup();
+  Bloc.observer = BlocObserverService();
   runApp(
     DevicePreview(
       enabled: true,
