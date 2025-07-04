@@ -1,10 +1,12 @@
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/manager/login_cubit/cubit/login_cubit_cubit.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/login_button_bloc_consumer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/password_forgot_link.dart';
-import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 
 class LoginTextFieldsForm extends StatefulWidget {
   const LoginTextFieldsForm({super.key});
@@ -27,7 +29,12 @@ class _LoginTextFieldsFormState extends State<LoginTextFieldsForm> {
 
   void _onLoginPressed() {
     if (_formKey.currentState?.validate() ?? false) {
-      //the login logic will be added in the cubit
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+      context.read<LoginCubitCubit>().loginUserWithEmailAndPassword(
+            email: email,
+            password: password,
+          );
     }
   }
 
@@ -52,11 +59,9 @@ class _LoginTextFieldsFormState extends State<LoginTextFieldsForm> {
           const Gap(20),
           const PasswordForgotNavLink(),
           const Gap(37),
-          OnBoardingButton(
-            isActive: true,
-            text: 'تسجيل دخول',
-            onTap: _onLoginPressed,
-          ),
+          LoginButtonBlocConsumer(
+            onLoginPressed: _onLoginPressed,
+          )
         ],
       ),
     );
