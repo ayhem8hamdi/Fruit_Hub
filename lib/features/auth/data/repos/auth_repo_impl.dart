@@ -38,4 +38,28 @@ class AuthRepoImpl implements AuthRepo {
       return Left(failure);
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final User firebaseUser = await fireBaseAuthService.loginUser(
+        email: email,
+        password: password,
+      );
+
+      final UserModel userModel = UserModel.fromFirebaseUser(
+        firebaseUser: firebaseUser,
+        phoneNumber: firebaseUser.phoneNumber ?? '',
+        userName: firebaseUser.displayName ?? '',
+      );
+
+      return Right(userModel);
+    } catch (error) {
+      final failure = Failure.fromException(error);
+      return Left(failure);
+    }
+  }
 }
