@@ -32,7 +32,7 @@ class OnBoardingButton extends StatelessWidget {
                 height: 24,
                 width: 24,
                 child: CircularProgressIndicator(
-                  strokeWidth: 2,
+                  strokeWidth: 4,
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                 ),
               )
