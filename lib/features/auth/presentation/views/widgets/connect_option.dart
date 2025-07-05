@@ -1,22 +1,27 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/manager/social_media_auth_cubit/cubit/social_media_auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ConnectLoginOptions extends StatelessWidget {
   const ConnectLoginOptions({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Column(children: [
+    return Column(children: [
       Padding(
-        padding: EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.only(bottom: 16),
         child: ConnectLoginItem(
           assetName: Assets.googleIcon,
           text: 'التسجيل بواسطة جوجل',
-          onTap: null,
+          onTap: () {
+            print('tapped');
+            context.read<SocialMediaAuthCubit>().loginWithGoogle();
+          },
         ),
       ),
-      Padding(
+      const Padding(
         padding: EdgeInsets.only(bottom: 16),
         child: ConnectLoginItem(
           assetName: Assets.appelIcon,
@@ -24,7 +29,7 @@ class ConnectLoginOptions extends StatelessWidget {
           onTap: null,
         ),
       ),
-      Padding(
+      const Padding(
         padding: EdgeInsets.only(bottom: 16),
         child: ConnectLoginItem(
           assetName: Assets.facebookIcon,

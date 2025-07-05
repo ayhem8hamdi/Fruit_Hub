@@ -66,12 +66,12 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, UserEntity>> loginWithGoogle() async {
     try {
-      final User firebaseUser = await fireBaseAuthService.signInWithGoogle();
+      final user = await fireBaseAuthService.signInWithGoogle();
 
       final UserModel userModel = UserModel.fromFirebaseUser(
-        firebaseUser: firebaseUser,
-        phoneNumber: firebaseUser.phoneNumber ?? '',
-        userName: firebaseUser.displayName ?? '',
+        firebaseUser: user!,
+        phoneNumber: user.phoneNumber ?? '',
+        userName: user.displayName ?? 'Google User',
       );
 
       return Right(userModel);
