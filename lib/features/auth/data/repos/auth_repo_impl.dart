@@ -80,4 +80,22 @@ class AuthRepoImpl implements AuthRepo {
       return Left(failure);
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginWithFacebook() async {
+    try {
+      final user = await fireBaseAuthService.signInWithGoogle();
+
+      final UserModel userModel = UserModel.fromFirebaseUser(
+        firebaseUser: user!,
+        phoneNumber: user.phoneNumber ?? '',
+        userName: user.displayName ?? 'Facebook User',
+      );
+
+      return Right(userModel);
+    } catch (error) {
+      final failure = Failure.fromException(error);
+      return Left(failure);
+    }
+  }
 }
