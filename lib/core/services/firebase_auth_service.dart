@@ -1,22 +1,84 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
+import 'package:flutter/services.dart';
 
 class FireBaseAuthService {
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
-  final GoogleSignIn? _googleSignIn; // Nullable for web
+  final GoogleSignIn? _googleSignIn;
 
   FireBaseAuthService(this._auth, this._firestore)
       : _googleSignIn = kIsWeb
             ? null
             : GoogleSignIn(
+                signInOption: SignInOption.standard,
                 scopes: ['email', 'profile'],
-                // Client ID only needed for iOS
-                clientId:
-                    '33905260853-3bhcgcgvcdls2ooqno12coutrca0bqnv.apps.googleusercontent.com',
+                clientId: defaultTargetPlatform == TargetPlatform.iOS
+                    ? '33905260853-3bhcgcgvcdls2ooqno12coutrca0bqnv.apps.googleusercontent.com'
+                    : null,
               );
+
+  Future<User?> signInWithGoogle() async {
+    try {
+      if (kIsWeb) {
+        final userCredential = await _auth.signInWithPopup(GoogleAuthProvider()
+          ..addScope('email')
+          ..addScope('profile'));
+        return _handleUserData(userCredential.user);
+      } else {
+        if (_googleSignIn == null) {
+          throw PlatformException(
+              code: 'INIT_ERROR',
+              message: 'GoogleSignIn not initialized for this platform');
+        }
+
+        // Clear previous sessions
+        await _googleSignIn.signOut();
+
+        // Trigger Google Sign-In flow
+        final googleUser = await _googleSignIn.signIn();
+        if (googleUser == null) return null;
+
+        // Get authentication tokens
+        final googleAuth = await googleUser.authentication;
+        final credential = GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken,
+          accessToken: googleAuth.accessToken,
+        );
+
+        // Sign into Firebase
+        final userCredential = await _auth.signInWithCredential(credential);
+        return _handleUserData(userCredential.user, googleUser: googleUser);
+      }
+    } on FirebaseAuthException catch (e) {
+      throw PlatformException(
+          code: e.code, message: e.message ?? 'Firebase authentication failed');
+    } catch (e) {
+      throw PlatformException(
+          code: 'UNKNOWN_ERROR',
+          message: 'Google Sign-In failed: ${e.toString()}');
+    }
+  }
+
+  Future<User?> _handleUserData(User? user,
+      {GoogleSignInAccount? googleUser}) async {
+    if (user == null) return null;
+
+    await _firestore.collection('users').doc(user.uid).set({
+      'email': user.email,
+      'fullName': user.displayName ?? googleUser?.displayName,
+      'phone': user.phoneNumber,
+      'photoURL': user.photoURL ?? googleUser?.photoUrl,
+      'authProvider': 'google',
+      'updatedAt': FieldValue.serverTimestamp(),
+      if (!(await _firestore.collection('users').doc(user.uid).get()).exists)
+        'createdAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+
+    return user;
+  }
 
   Future<User> registerUser({
     required String email,
@@ -49,69 +111,5 @@ class FireBaseAuthService {
       password: password,
     );
     return userCredential.user!;
-  }
-
-  Future<User?> signInWithGoogle() async {
-    try {
-      if (kIsWeb) {
-        // New Web implementation using Firebase Auth directly
-        final userCredential = await _auth.signInWithPopup(GoogleAuthProvider()
-          ..addScope('email')
-          ..addScope('profile'));
-
-        final user = userCredential.user;
-        if (user != null) await _updateUserData(user);
-        return user;
-      } else {
-        if (_googleSignIn == null)
-          throw Exception('GoogleSignIn not initialized for mobile');
-
-        await _googleSignIn.signOut();
-        final googleUser = await _googleSignIn.signIn();
-        if (googleUser == null) return null;
-
-        final googleAuth = await googleUser.authentication;
-        final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-
-        final userCredential = await _auth.signInWithCredential(credential);
-        final user = userCredential.user;
-        if (user != null) await _updateUserData(user, googleUser: googleUser);
-        return user;
-      }
-    } catch (e) {
-      rethrow; // Let the repository handle exceptions
-    }
-  }
-
-  Future<void> _updateUserData(User user,
-      {GoogleSignInAccount? googleUser}) async {
-    final userRef = _firestore.collection('users').doc(user.uid);
-    final userDoc = await userRef.get();
-
-    final userData = {
-      'email': user.email,
-      'fullName': user.displayName ?? googleUser?.displayName,
-      'phone': user.phoneNumber,
-      'photoURL': user.photoURL ?? googleUser?.photoUrl,
-      'updatedAt': FieldValue.serverTimestamp(),
-      'authProvider': 'google',
-    };
-
-    if (!userDoc.exists) {
-      userData['createdAt'] = FieldValue.serverTimestamp();
-      await userRef.set(userData);
-    } else {
-      await userRef.update(userData);
-    }
-  }
-
-  Future<void> signOut() async {
-    await _auth.signOut();
-    if (!kIsWeb && _googleSignIn != null) {
-      await _googleSignIn.signOut();
-    }
   }
 }

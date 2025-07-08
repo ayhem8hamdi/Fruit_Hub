@@ -9,10 +9,8 @@ class SocialMediaAuthCubit extends Cubit<SocialMediaAuthState> {
   SocialMediaAuthCubit(this.authRepo) : super(SocialMediaAuthInitial());
   final AuthRepo authRepo;
   Future<void> loginWithGoogle() async {
-    print('socuila cubit started');
     emit(SocialMediaAuthLoading());
     final result = await authRepo.loginWithGoogle();
-    print('got result');
     result.fold(
       (failure) => emit(SocialMediaAuthFailure(failure: failure)),
       (result) => emit(SocialMediaAuthSucces(userEntity: result)),

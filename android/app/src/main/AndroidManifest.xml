@@ -1,20 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.advanced_ecommerce">
 
     <!-- Required permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
-    <!-- 2025 Recommended for Firebase & Google Auth -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:label="Fruit Hub"
-        android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
-        android:usesCleartextTraffic="true"> <!-- Remove in production -->
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
@@ -35,27 +33,39 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
-            <!-- Add for Google Sign-In callback -->
+            <!-- Google Sign-In callback -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="https"
-                    android:host="YOUR_FIREBASE_PROJECT_ID.firebaseapp.com"/>
+                      android:host="fruit-hub-f2837.firebaseapp.com"/>
             </intent-filter>
         </activity>
 
-        <!-- Google Sign-In Meta Data -->
+        <!-- Google Services Meta Data -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <!-- Firebase Auth Web Client ID -->
+        <meta-data
+            android:name="firebase_web_client_id"
+            android:value="33905260853-4nqo94fl45brh0ovt1rv5teiv6j2ki49.apps.googleusercontent.com" />
+
+        <!-- Provider Installer -->
+        <provider
+            android:name="com.google.android.gms.common.providerinstaller.ProviderInstaller"
+            android:authorities="com.example.advanced_ecommerce.providerinstaller"
+            android:exported="false"
+            android:multiprocess="true" />
 
         <!-- Flutter embedding -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
 
-        <!-- Firebase Cloud Messaging (optional) -->
+        <!-- Firebase Cloud Messaging -->
         <service
             android:name=".java.MyFirebaseMessagingService"
             android:exported="false">
