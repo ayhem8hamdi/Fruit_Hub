@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb;
 import 'package:flutter/services.dart';
@@ -26,7 +27,7 @@ class FireBaseAuthService {
         final userCredential = await _auth.signInWithPopup(GoogleAuthProvider()
           ..addScope('email')
           ..addScope('profile'));
-        return _handleUserData(userCredential.user);
+        return _handleUserDataFromGoogle(userCredential.user);
       } else {
         if (_googleSignIn == null) {
           throw PlatformException(
@@ -50,7 +51,8 @@ class FireBaseAuthService {
 
         // Sign into Firebase
         final userCredential = await _auth.signInWithCredential(credential);
-        return _handleUserData(userCredential.user, googleUser: googleUser);
+        return _handleUserDataFromGoogle(userCredential.user,
+            googleUser: googleUser);
       }
     } on FirebaseAuthException catch (e) {
       throw PlatformException(
@@ -62,7 +64,7 @@ class FireBaseAuthService {
     }
   }
 
-  Future<User?> _handleUserData(User? user,
+  Future<User?> _handleUserDataFromGoogle(User? user,
       {GoogleSignInAccount? googleUser}) async {
     if (user == null) return null;
 
@@ -111,5 +113,72 @@ class FireBaseAuthService {
       password: password,
     );
     return userCredential.user!;
+  }
+
+  Future<User?> signInWithFacebook() async {
+    final loginResult = await FacebookAuth.instance.login(
+      permissions: ['email', 'public_profile'],
+    );
+
+    switch (loginResult.status) {
+      case LoginStatus.success:
+        final accessToken = loginResult.accessToken!;
+        final credential =
+            FacebookAuthProvider.credential(accessToken.tokenString);
+        final userCredential = await _auth.signInWithCredential(credential);
+
+        final facebookUserData = await FacebookAuth.instance.getUserData();
+
+        return _handleUserData(
+          userCredential.user,
+          facebookUserData: facebookUserData,
+        );
+
+      case LoginStatus.cancelled:
+        return null;
+
+      case LoginStatus.failed:
+        throw PlatformException(
+          code: 'FACEBOOK_LOGIN_FAILED',
+          message: loginResult.message ?? 'Facebook login failed',
+        );
+
+      default:
+        throw PlatformException(
+          code: 'UNKNOWN_ERROR',
+          message: 'Facebook login returned unknown status',
+        );
+    }
+  }
+
+  Future<User?> _handleUserData(
+    User? user, {
+    GoogleSignInAccount? googleUser,
+    Map<String, dynamic>? facebookUserData,
+  }) async {
+    if (user == null) return null;
+
+    final userDoc = _firestore.collection('users').doc(user.uid);
+    final docSnapshot = await userDoc.get();
+
+    await userDoc.set({
+      'email': user.email,
+      'fullName': user.displayName ??
+          googleUser?.displayName ??
+          facebookUserData?['name'],
+      'phone': user.phoneNumber,
+      'photoURL': user.photoURL ??
+          googleUser?.photoUrl ??
+          facebookUserData?['picture']?['data']?['url'],
+      'authProvider': facebookUserData != null
+          ? 'facebook'
+          : googleUser != null
+              ? 'google'
+              : 'email',
+      'updatedAt': FieldValue.serverTimestamp(),
+      if (!docSnapshot.exists) 'createdAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+
+    return user;
   }
 }
