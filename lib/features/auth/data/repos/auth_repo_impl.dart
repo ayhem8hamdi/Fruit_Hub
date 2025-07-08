@@ -84,7 +84,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, UserEntity>> loginWithFacebook() async {
     try {
-      final user = await fireBaseAuthService.signInWithGoogle();
+      final user = await fireBaseAuthService.signInWithFacebook();
 
       final UserModel userModel = UserModel.fromFirebaseUser(
         firebaseUser: user!,
@@ -94,6 +94,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return Right(userModel);
     } catch (error) {
+      print(error.toString());
       final failure = Failure.fromException(error);
       return Left(failure);
     }

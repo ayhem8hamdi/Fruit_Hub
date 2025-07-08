@@ -27,6 +27,30 @@
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script async defer crossorigin="anonymous" 
+  src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+  <!-- Facebook SDK -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1262583735375266',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v23.0'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 </head>
 <body>
   <!-- Google Identity Services Loader -->

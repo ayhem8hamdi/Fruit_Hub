@@ -22,7 +22,7 @@ void main() async {
   Bloc.observer = BlocObserverService();
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (context) => const FruitHub(),
     ),
   );

@@ -16,7 +16,6 @@ class ConnectLoginOptions extends StatelessWidget {
           assetName: Assets.googleIcon,
           text: 'التسجيل بواسطة جوجل',
           onTap: () {
-            print('tapped');
             context.read<SocialMediaAuthCubit>().loginWithGoogle();
           },
         ),
@@ -29,12 +28,14 @@ class ConnectLoginOptions extends StatelessWidget {
           onTap: null,
         ),
       ),
-      const Padding(
-        padding: EdgeInsets.only(bottom: 16),
+      Padding(
+        padding: const EdgeInsets.only(bottom: 16),
         child: ConnectLoginItem(
           assetName: Assets.facebookIcon,
           text: 'التسجيل بواسطة فيسبوك',
-          onTap: null,
+          onTap: () {
+            context.read<SocialMediaAuthCubit>().loginWithFacebook();
+          },
         ),
       ),
     ]);
