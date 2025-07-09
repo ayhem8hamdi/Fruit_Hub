@@ -1,4 +1,3 @@
-import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -9,10 +8,9 @@ void configLoading() {
     ..indicatorSize = 45.0
     ..radius = 10.0
     ..progressColor = Colors.white
-    ..backgroundColor = AppColors.kPrimaryColor
+    ..backgroundColor = Colors.black.withOpacity(0.7)
     ..indicatorColor = Colors.white
     ..textColor = Colors.white
-    ..maskColor = AppColors.kPrimaryColor.withOpacity(0.4)
     ..userInteractions = false
     ..dismissOnTap = false;
 }

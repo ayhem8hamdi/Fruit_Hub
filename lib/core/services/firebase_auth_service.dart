@@ -126,6 +126,9 @@ class FireBaseAuthService {
     required String fullName,
     required String phoneNumber,
   }) async {
+    final formattedPhone =
+        '+216${phoneNumber.replaceAll(RegExp(r'[^\d]'), '')}';
+
     final userCredential = await _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
@@ -134,7 +137,7 @@ class FireBaseAuthService {
     await _firestore.collection('users').doc(userCredential.user!.uid).set({
       'email': email,
       'fullName': fullName,
-      'phone': phoneNumber,
+      'phone': formattedPhone,
       'authProvider': 'email',
       'createdAt': FieldValue.serverTimestamp(),
     });
@@ -175,11 +178,7 @@ class FireBaseAuthService {
       'photoURL': user.photoURL ??
           googleUser?.photoUrl ??
           facebookUserData?['picture']?['data']?['url'],
-      'authProvider': facebookUserData != null
-          ? 'facebook'
-          : googleUser != null
-              ? 'google'
-              : 'email',
+      'authProvider': facebookUserData != null ? 'facebook' : 'google',
       'updatedAt': FieldValue.serverTimestamp(),
       if (isNewUser) 'createdAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
