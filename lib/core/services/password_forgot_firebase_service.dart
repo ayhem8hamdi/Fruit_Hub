@@ -39,4 +39,40 @@ class PasswordForgotFirebaseService {
 
     return completer.future;
   }
+
+  Future<UserCredential> startPhoneVerification({
+    required String verificationId,
+    required String smsCode,
+  }) async {
+    try {
+      final credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: smsCode,
+      );
+
+      final userCredential = await _auth.signInWithCredential(credential);
+
+      return userCredential;
+    } catch (e) {
+      // Rethrow or wrap the error if needed
+      throw FirebaseAuthException(
+        code: 'invalid-verification',
+        message: 'Verification failed. ${e.toString()}',
+      );
+    }
+  }
+
+  /// 🔍 Helper: Get email associated with phone
+  Future<String?> getEmailFromPhone(String userInputPhone) async {
+    final query = await _firestore
+        .collection('users')
+        .where('phone', isEqualTo: userInputPhone)
+        .limit(1)
+        .get();
+
+    if (query.docs.isNotEmpty) {
+      return query.docs.first.data()['email'] as String?;
+    }
+    return null;
+  }
 }
