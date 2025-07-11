@@ -32,47 +32,9 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
-            <!-- Google Sign-In callback -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="https"
-                      android:host="fruit-hub-f2837.firebaseapp.com"/>
-            </intent-filter>
         </activity>
 
-        <!-- Google Services Meta Data -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <!-- Firebase Auth Web Client ID -->
-        <meta-data
-            android:name="firebase_web_client_id"
-            android:value="33905260853-4nqo94fl45brh0ovt1rv5teiv6j2ki49.apps.googleusercontent.com" />
-
-        <!-- Provider Installer -->
-        <provider
-            android:name="com.google.android.gms.common.providerinstaller.ProviderInstaller"
-            android:authorities="com.example.advanced_ecommerce.providerinstaller"
-            android:exported="false"
-            android:multiprocess="true" />
-
-        <!-- Flutter embedding -->
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
-
-        <!-- Firebase Cloud Messaging -->
-        <service
-            android:name=".java.MyFirebaseMessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
+        <!-- Removed: Firebase & Google Sign-In specific entries -->
 
         <!-- ✅ Facebook Login Setup -->
         <meta-data
@@ -91,6 +53,11 @@
             android:authorities="com.facebook.app.FacebookContentProvider.1262583735375266"
             android:name="com.facebook.FacebookContentProvider"
             android:exported="true" />
+
+        <!-- Flutter embedding -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
     </application>
 
     <!-- Text processing queries -->

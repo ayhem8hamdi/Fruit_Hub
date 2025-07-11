@@ -1,5 +1,5 @@
 import 'package:advanced_ecommerce/features/auth/domain/entities/user_entity.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserModel extends UserEntity {
   UserModel({
@@ -9,16 +9,19 @@ class UserModel extends UserEntity {
     required super.uId,
   });
 
-  factory UserModel.fromFirebaseUser({
-    required User firebaseUser,
-    required String phoneNumber,
-    required String userName,
+  factory UserModel.fromSupabaseUser({
+    required User supabaseUser,
+    String? phoneNumber,
+    String? userName,
   }) {
     return UserModel(
-      email: firebaseUser.email ?? '',
-      phoneNumber: phoneNumber,
-      userName: userName,
-      uId: firebaseUser.uid,
+      email: supabaseUser.email ?? '',
+      phoneNumber: phoneNumber ?? '',
+      userName: userName ??
+          supabaseUser.userMetadata?['name'] ??
+          supabaseUser.email?.split('@').first ??
+          '',
+      uId: supabaseUser.id,
     );
   }
 }
