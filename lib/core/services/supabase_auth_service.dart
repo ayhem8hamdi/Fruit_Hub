@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/core/errors/failure.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -41,11 +42,25 @@ class SupabaseAuthService {
     required String email,
     required String password,
   }) async {
-    final response = await _client.auth.signInWithPassword(
-      email: email,
-      password: password,
-    );
-    return response.user;
+    try {
+      final response = await _client.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+      return response.user;
+    } on AuthException catch (e) {
+      // Handle specific auth errors
+      if (e.message.contains('Invalid login credentials')) {
+        throw AuthenticationException(
+            'البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      } else if (e.message.contains('Email not confirmed')) {
+        throw AuthenticationException(
+            'لم يتم تأكيد البريد الإلكتروني بعد، يرجى التحقق من بريدك الوارد');
+      }
+      throw AuthenticationException('حدث خطأ أثناء تسجيل الدخول: ${e.message}');
+    } catch (e) {
+      throw AuthenticationException('حدث خطأ غير متوقع أثناء تسجيل الدخول');
+    }
   }
 
   /// Sign in with Google OAuth
