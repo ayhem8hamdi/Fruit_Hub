@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:advanced_ecommerce/core/errors/failure.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseAuthService {
@@ -63,26 +66,84 @@ class SupabaseAuthService {
     }
   }
 
-  /// Sign in with Google OAuth
   Future<User?> signInWithGoogle() async {
-    await _client.auth.signInWithOAuth(
-      OAuthProvider.google,
-      redirectTo: kIsWeb ? null : 'io.supabase.flutter://login-callback/',
+    if (kIsWeb) {
+      // Web platform: use Supabase OAuth flow
+      try {
+        log('starting');
+        await _client.auth.signInWithOAuth(
+          OAuthProvider.google,
+        );
+        log('done');
+        final user = _client.auth.currentUser;
+        log('filling data');
+        if (user != null) {
+          await _createOrUpdateUserProfile(
+            userId: user.id,
+            email: user.email,
+            fullName:
+                user.userMetadata?['full_name'] ?? user.email?.split('@').first,
+            authProvider: 'google',
+          );
+        }
+        log('created user');
+        return user;
+      } catch (e) {
+        throw Exception('Web Google sign-in failed: $e');
+      }
+    } else {
+      // Mobile platform: use GoogleSignIn and sign in with ID token
+      return await _signInWithGoogleMobile();
+    }
+  }
+
+  Future<User?> _signInWithGoogleMobile() async {
+    const webClientId =
+        '33905260853-ano017dnrv1grbm65hpa4sf8tkjdubpl.apps.googleusercontent.com';
+    const iosClientId =
+        '33905260853-3bhcgcgvcdls2ooqno12coutrca0bqnv.apps.googleusercontent.com';
+
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+      clientId: iosClientId,
+      serverClientId: webClientId,
     );
 
-    // After OAuth flow completes, update/create user profile
-    final user = _client.auth.currentUser;
-    if (user != null) {
-      await _createOrUpdateUserProfile(
-        userId: user.id,
-        email: user.email,
-        fullName:
-            user.userMetadata?['full_name'] ?? user.email?.split('@').first,
-        authProvider: 'google',
-      );
-    }
+    try {
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        throw Exception('User cancelled Google Sign-In.');
+      }
 
-    return user;
+      final googleAuth = await googleUser.authentication;
+      final accessToken = googleAuth.accessToken;
+      final idToken = googleAuth.idToken;
+
+      if (accessToken == null || idToken == null) {
+        throw Exception('Missing Google auth tokens.');
+      }
+
+      final response = await _client.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: idToken,
+        accessToken: accessToken,
+      );
+
+      final user = response.user;
+
+      if (user != null) {
+        await _createOrUpdateUserProfile(
+          userId: user.id,
+          email: user.email,
+          fullName:
+              user.userMetadata?['full_name'] ?? user.email?.split('@').first,
+          authProvider: 'google',
+        );
+      }
+
+      return user;
+    } catch (e) {
+      throw Exception('Mobile Google sign-in failed: $e');
+    }
   }
 
   /// Sign in with Facebook OAuth
@@ -142,7 +203,6 @@ class SupabaseAuthService {
       if (phone != null) 'phone': phone,
       if (authProvider != null) 'auth_provider': authProvider,
       if (avatarUrl != null) 'avatar_url': avatarUrl,
-      'updated_at': DateTime.now().toIso8601String(),
     };
 
     await _client.from('profiles').upsert({'id': userId, ...updateData});

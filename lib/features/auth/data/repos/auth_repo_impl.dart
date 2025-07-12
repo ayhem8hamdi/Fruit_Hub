@@ -56,7 +56,6 @@ class AuthRepoImpl implements AuthRepo {
 
       return Right(userModel);
     } catch (error) {
-      print(error.toString());
       return Left(Failure.fromException(error));
     }
   }
@@ -77,6 +76,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return Right(userModel);
     } catch (error) {
+      print(error.toString());
       return Left(Failure.fromException(error));
     }
   }
