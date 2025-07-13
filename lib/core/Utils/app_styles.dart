@@ -47,4 +47,10 @@ abstract class AppStyles {
         fontSize: responsiveFontSize(context, fontSize: 16),
         fontWeight: FontWeight.w600,
       );
+  static TextStyle styleRegular16(BuildContext context) =>
+      _baseCairo(context).copyWith(
+        color: const Color(0XFF949D9E),
+        fontSize: responsiveFontSize(context, fontSize: 16),
+        fontWeight: FontWeight.w400,
+      );
 }

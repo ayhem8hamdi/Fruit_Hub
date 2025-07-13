@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
+import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -26,6 +27,10 @@ class HomeScreenUserListTile extends StatelessWidget {
         leading: SvgPicture.asset(
           Assets.userIcon,
           fit: BoxFit.fill,
+        ),
+        title: Text(
+          'صباح الخير !..',
+          style: AppStyles.styleBold16(context),
         ),
       ),
     );
