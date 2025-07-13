@@ -36,10 +36,10 @@ abstract class AppStyles {
 
   static TextStyle styleBold16(BuildContext context) =>
       _baseCairo(context).copyWith(
-        color: const Color(0XFFFFFFFF),
-        fontSize: responsiveFontSize(context, fontSize: 16),
-        fontWeight: FontWeight.w700,
-      );
+          color: const Color(0XFFFFFFFF),
+          fontSize: responsiveFontSize(context, fontSize: 16),
+          fontWeight: FontWeight.w700,
+          height: 1.4);
 
   static TextStyle styleSemiBold16(BuildContext context) =>
       _baseCairo(context).copyWith(

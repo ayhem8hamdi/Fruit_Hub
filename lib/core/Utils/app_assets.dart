@@ -18,4 +18,5 @@ abstract class Assets {
   static const String userIcon = 'assets/images/user_list_tile_icon.svg';
   static const String notifIcon =
       'assets/images/user_list_tile_notifications_icon.svg';
+  static const String userImage = 'assets/images/userIcon.png';
 }
