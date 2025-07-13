@@ -15,4 +15,7 @@ abstract class Assets {
   static const String facebookIcon = 'assets/images/facebook.svg';
   static const String passwordChange =
       'assets/images/password_successfully_changed.svg';
+  static const String userIcon = 'assets/images/user_list_tile_icon.svg';
+  static const String notifIcon =
+      'assets/images/user_list_tile_notifications_icon.svg';
 }
