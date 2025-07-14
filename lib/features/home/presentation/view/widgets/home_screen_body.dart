@@ -1,5 +1,8 @@
+import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
+import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_search_text_field.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/home_screen_user_list_tile.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/soft_left_curve_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -29,27 +32,33 @@ class CustomCurvedContainer extends StatelessWidget {
       clipper: SoftLeftCurveClipper(),
       child: Container(
         color: const Color(0XFF5DB957),
-        padding: const EdgeInsets.symmetric(horizontal: 33, vertical: 25),
+        padding:
+            const EdgeInsets.only(right: 27, top: 29, bottom: 29, left: 37),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'عروض العيد',
+              style: AppStyles.styleRegular13(context),
             ),
             const Gap(12),
-            const Text(
-              '%25 خصم',
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.green,
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                      text: 'خصم ',
+                      style: AppStyles.styleBold19(context)
+                          .copyWith(color: const Color(0XFFFFFFFF))),
+                  TextSpan(
+                      text: '25%',
+                      style: AppStyles.styleBold19(context)
+                          .copyWith(color: const Color(0XFFFFFFFF))),
+                ],
               ),
-              child: const Text('تسوق الآن'),
             ),
+            const SizedBox(height: 15),
+            const CustomDiscountButton()
           ],
         ),
       ),
@@ -57,18 +66,21 @@ class CustomCurvedContainer extends StatelessWidget {
   }
 }
 
-class SoftLeftCurveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.moveTo(17, 0);
-    path.quadraticBezierTo(0, size.height / 2, 17, size.height);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
+class CustomDiscountButton extends StatelessWidget {
+  const CustomDiscountButton({super.key});
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 8),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(4)),
+      child: Text(
+        'تسوق الان',
+        style: AppStyles.styleBold13(context)
+            .copyWith(color: AppColors.kPrimaryColor),
+      ),
+    ));
+  }
 }
