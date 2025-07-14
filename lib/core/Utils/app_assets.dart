@@ -21,4 +21,7 @@ abstract class Assets {
   static const String userImage = 'assets/images/userIcon.png';
   static const String searchIcon = 'assets/images/search-normal.svg';
   static const String filterIcon = 'assets/images/filter_icon.svg';
+  static const String discountFruitImage =
+      'assets/images/discount_fruit_image.svg';
+  static const String fruits = 'assets/images/fruits.png';
 }
