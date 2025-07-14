@@ -14,7 +14,45 @@ class HomeScreenBody extends StatelessWidget {
         Gap(16),
         CustomSearchTextField(hintText: 'ابحث عن.......'),
         Gap(12),
+        CustomCurvedContainer()
       ],
+    );
+  }
+}
+
+class CustomCurvedContainer extends StatelessWidget {
+  const CustomCurvedContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipPath(
+      clipper: SoftLeftCurveClipper(),
+      child: Container(
+        color: const Color(0XFF5DB957),
+        padding: const EdgeInsets.symmetric(horizontal: 33, vertical: 25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'عروض العيد',
+            ),
+            const Gap(12),
+            const Text(
+              '%25 خصم',
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.green,
+              ),
+              child: const Text('تسوق الآن'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
