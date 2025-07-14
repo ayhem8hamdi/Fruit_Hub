@@ -26,7 +26,7 @@ class CustomCurvedContainer extends StatelessWidget {
               ),
             ),
             const Gap(3),
-            const Expanded(child: const CustomCurvedContainerTitles()),
+            const Expanded(child: CustomCurvedContainerTitles()),
             const Gap(12),
             const CustomDiscountButton()
           ],
