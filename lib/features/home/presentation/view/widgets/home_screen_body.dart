@@ -9,16 +9,12 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [HomeScreenUserListTile(), Gap(16), CustomSearchBar()],
+      children: [
+        HomeScreenUserListTile(),
+        Gap(16),
+        CustomSearchTextField(hintText: 'ابحث عن.......'),
+        Gap(12)
+      ],
     );
-  }
-}
-
-class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CustomSearchTextField(hintText: 'ابحث عن.......');
   }
 }

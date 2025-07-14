@@ -20,4 +20,5 @@ abstract class Assets {
       'assets/images/user_list_tile_notifications_icon.svg';
   static const String userImage = 'assets/images/userIcon.png';
   static const String searchIcon = 'assets/images/search-normal.svg';
+  static const String filterIcon = 'assets/images/filter_icon.svg';
 }

@@ -126,4 +126,11 @@ abstract class MethodsHelper {
     }
     return null;
   }
+
+  static OutlineInputBorder whiteBorder({double radius = 3}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(radius),
+      borderSide: const BorderSide(color: Colors.white),
+    );
+  }
 }
