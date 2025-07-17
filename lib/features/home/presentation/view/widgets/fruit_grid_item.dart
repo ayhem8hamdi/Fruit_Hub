@@ -19,7 +19,7 @@ class FruitGridItem extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.only(top: 10, right: 9, bottom: 5),
-                child: Icon(Icons.favorite_border, size: 29),
+                child: Icon(Icons.favorite_border, size: 23),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),
