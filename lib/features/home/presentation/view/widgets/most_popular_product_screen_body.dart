@@ -1,5 +1,8 @@
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_most_popular_product_appbar.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/most_Popular_Product_Title.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gap/gap.dart';
 
 class MostPopularProductScreenBody extends StatelessWidget {
   const MostPopularProductScreenBody({super.key});
@@ -10,7 +13,10 @@ class MostPopularProductScreenBody extends StatelessWidget {
       slivers: [
         CustomMostPopularProductAppbar(
           title: 'الأكثر مبيعًا',
-        )
+        ),
+        SliverGap(24),
+        MostPopularProductTitle(),
+        SliverGap(10)
       ],
     );
   }
