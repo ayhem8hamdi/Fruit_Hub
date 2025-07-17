@@ -8,31 +8,33 @@ class HomeScreenUserListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 8),
-          child: Image.asset(
-            Assets.userImage,
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Image.asset(
+              Assets.userImage,
+            ),
           ),
-        ),
-        title: Padding(
-          padding: const EdgeInsets.only(bottom: 2),
-          child: Text(
-            'صباح الخير !..',
-            style: AppStyles.styleRegular16(context),
+          title: Padding(
+            padding: const EdgeInsets.only(bottom: 2),
+            child: Text(
+              'صباح الخير !..',
+              style: AppStyles.styleRegular16(context),
+            ),
           ),
-        ),
-        subtitle: Text(
-          'أحمد مصطفي',
-          style: AppStyles.styleBold16(context)
-              .copyWith(color: const Color(0XFF0C0D0D)),
-        ),
-        trailing: SvgPicture.asset(
-          Assets.notifIcon,
-          fit: BoxFit.fill,
+          subtitle: Text(
+            'أحمد مصطفي',
+            style: AppStyles.styleBold16(context)
+                .copyWith(color: const Color(0XFF0C0D0D)),
+          ),
+          trailing: SvgPicture.asset(
+            Assets.notifIcon,
+            fit: BoxFit.fill,
+          ),
         ),
       ),
     );

@@ -19,36 +19,38 @@ class CustomSearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomBoxShadowContainer(
-        widget: TextFormField(
-      controller: controller,
-      validator: validator,
-      style: AppStyles.styleSemiBold16(context)
-          .copyWith(color: const Color(0xFF0C0D0D)),
-      decoration: InputDecoration(
-        focusColor: Colors.white,
-        hoverColor: Colors.white,
-        prefixIcon: const SearchBarCusromIcon(
-          svgName: Assets.searchIcon,
+    return SliverToBoxAdapter(
+      child: CustomBoxShadowContainer(
+          widget: TextFormField(
+        controller: controller,
+        validator: validator,
+        style: AppStyles.styleSemiBold16(context)
+            .copyWith(color: const Color(0xFF0C0D0D)),
+        decoration: InputDecoration(
+          focusColor: Colors.white,
+          hoverColor: Colors.white,
+          prefixIcon: const SearchBarCusromIcon(
+            svgName: Assets.searchIcon,
+          ),
+          suffixIcon: const SearchBarCusromIcon(
+            svgName: Assets.filterIcon,
+          ),
+          isDense: true,
+          hintText: hintText,
+          hintStyle: AppStyles.styleBold13(context),
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 18,
+            horizontal: 20,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+          enabledBorder: MethodsHelper.whiteBorder(),
+          focusedBorder: MethodsHelper.whiteBorder(),
+          focusedErrorBorder: MethodsHelper.whiteBorder(),
+          errorBorder: MethodsHelper.whiteBorder(),
+          errorStyle: MethodsHelper.errorTextStyle(context),
         ),
-        suffixIcon: const SearchBarCusromIcon(
-          svgName: Assets.filterIcon,
-        ),
-        isDense: true,
-        hintText: hintText,
-        hintStyle: AppStyles.styleBold13(context),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 18,
-          horizontal: 20,
-        ),
-        filled: true,
-        fillColor: Colors.white,
-        enabledBorder: MethodsHelper.whiteBorder(),
-        focusedBorder: MethodsHelper.whiteBorder(),
-        focusedErrorBorder: MethodsHelper.whiteBorder(),
-        errorBorder: MethodsHelper.whiteBorder(),
-        errorStyle: MethodsHelper.errorTextStyle(context),
-      ),
-    ));
+      )),
+    );
   }
 }
