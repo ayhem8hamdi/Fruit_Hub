@@ -12,50 +12,51 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          HomeScreenUserListTile(),
-          Gap(16),
-          CustomSearchTextField(hintText: 'ابحث عن.......'),
-          Gap(12),
-          FruitDiscountWidget(),
-          Gap(14),
-          BestSellerTitlesLine(),
-          Gap(12),
-          FruitsGridView(
-            itemCount: 20,
-          )
-        ],
-      ),
+    return const CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: HomeScreenUserListTile(),
+        ),
+        SliverGap(16),
+        SliverToBoxAdapter(
+          child: CustomSearchTextField(hintText: 'ابحث عن.......'),
+        ),
+        SliverGap(12),
+        SliverToBoxAdapter(
+          child: FruitDiscountWidget(),
+        ),
+        SliverGap(14),
+        SliverToBoxAdapter(
+          child: BestSellerTitlesLine(),
+        ),
+        SliverGap(12),
+        FruitItemGridDelegateBuilder(),
+      ],
     );
   }
 }
 
-class FruitsGridView extends StatelessWidget {
-  final int itemCount;
-
-  const FruitsGridView({
+class FruitItemGridDelegateBuilder extends StatelessWidget {
+  const FruitItemGridDelegateBuilder({
     super.key,
-    required this.itemCount,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
+    return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 8, // Vertical gap
-        crossAxisSpacing: 16, // Horizontal gap
-        childAspectRatio: 163 / 214, // Width/Height ratio
+      sliver: SliverGrid(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 16,
+          childAspectRatio: 163 / 214,
+        ),
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => const FruitGridItem(),
+          childCount: 20,
+        ),
       ),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        return const FruitGridItem();
-      },
     );
   }
 }
