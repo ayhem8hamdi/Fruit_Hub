@@ -9,29 +9,34 @@ class CustomMostPopularProductAppbar extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 56,
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              title,
-              style: AppStyles.styleBold19(context),
-            ),
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SizedBox(
+          height: 56,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  title,
+                  style: AppStyles.styleBold19(context),
+                ),
+              ),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: AuthAppBarCustomIcon(),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SvgPicture.asset(
+                  Assets.notifIcon,
+                  fit: BoxFit.fill,
+                ),
+              )
+            ],
           ),
-          const Align(
-            alignment: Alignment.centerRight,
-            child: AuthAppBarCustomIcon(),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: SvgPicture.asset(
-              Assets.notifIcon,
-              fit: BoxFit.fill,
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

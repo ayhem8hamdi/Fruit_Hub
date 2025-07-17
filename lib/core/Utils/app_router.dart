@@ -6,12 +6,14 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/password_for
 import 'package:advanced_ecommerce/features/auth/presentation/views/recover_password_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/home_screen.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/most_popular_product_screen.dart';
 import 'package:get/get.dart';
 
 abstract class AppRouter {
   static String splashScreen = "/";
   static String onBoardingScreen = "/onBoardingScreen";
   static String homeScreen = "/homeScreen";
+  static String mostPopularScreen = "/homeScreen/mostPopularScreen";
   static String loginScreen = "/loginScreen";
   static String signUpScreen = "/loginScreen/signUpScreen";
   static String passwordForgotScreen = "/loginScreen/passwordForgot";
@@ -52,6 +54,10 @@ abstract class AppRouter {
       GetPage(
         name: createNewPasswordScreen,
         page: () => const CreateNewPasswordScreen(),
+      ),
+      GetPage(
+        name: mostPopularScreen,
+        page: () => const MostPopularProductScreen(),
       ),
     ];
   }
