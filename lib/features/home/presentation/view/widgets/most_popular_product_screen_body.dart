@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_most_popular_product_appbar.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit_item_grid_delegate_builder.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/most_Popular_Product_Title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +17,8 @@ class MostPopularProductScreenBody extends StatelessWidget {
         ),
         SliverGap(24),
         MostPopularProductTitle(),
-        SliverGap(10)
+        SliverGap(14),
+        FruitItemGridDelegateBuilder()
       ],
     );
   }
