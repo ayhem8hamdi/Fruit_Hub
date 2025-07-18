@@ -16,18 +16,37 @@ class NotifScreenBody extends StatelessWidget {
         slivers: [
           CustomMostPopularProductAppbar(title: 'الاشعارات'),
           SliverGap(16),
-          NotifScreenTitlesTextRow(),
-          SliverGap(25),
+          NotifScreenTitlesTextRow(
+            notifTimeTitles: 'جديد  ',
+          ),
+          SliverGap(16),
           NotificationItem(),
           //we gonna change this with list builder :
-          SliverGap(15),
+          SliverGap(8),
           NotificationUnseenItemStack(
             image: Assets.notificationImagePourcentage,
           ),
-          SliverGap(15),
+          SliverGap(8),
           NotificationUnseenItemStack(
             image: Assets.notificationImageSales,
-          )
+          ),
+          SliverGap(11),
+          NotifScreenTitlesTextRow(
+            notifTimeTitles: 'في وقت سابق  ',
+          ),
+
+          SliverGap(16),
+          NotificationItem(),
+          //we gonna change this with list builder :
+          SliverGap(8),
+          NotificationUnseenItemStack(
+            image: Assets.notificationImagePourcentage,
+          ),
+          SliverGap(8),
+          NotificationUnseenItemStack(
+            image: Assets.notificationImageSales,
+          ),
+          SliverGap(8),
         ],
       ),
     );
