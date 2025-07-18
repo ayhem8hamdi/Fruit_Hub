@@ -1,8 +1,8 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
-import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_most_popular_product_appbar.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/notif_screen_text_titles_row.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/notification_item.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/unseen_notif_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -19,66 +19,16 @@ class NotifScreenBody extends StatelessWidget {
           NotifScreenTitlesTextRow(),
           SliverGap(25),
           NotificationItem(),
+          //we gonna change this with list builder :
           SliverGap(15),
-          NotificationUnseenItem()
-        ],
-      ),
-    );
-  }
-}
-
-class NotificationUnseenItem extends StatelessWidget {
-  const NotificationUnseenItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Container(
-        color: const Color(0XFFEBF9F1),
-        child: Padding(
-          padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 7),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: 56,
-                  height: 56,
-                  child: Transform.scale(
-                    scale: 1.3,
-                    child: Image.asset(
-                      Assets.notificationImagePourcentage,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 18),
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Expanded(
-                      child: NotifListTileTextContent(),
-                    ),
-                    const SizedBox(width: 8),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        '9 صباحا',
-                        style: AppStyles.styleRegular13(context).copyWith(
-                          color: const Color(0XFF949D9E),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          NotificationUnseenItemStack(
+            image: Assets.notificationImagePourcentage,
           ),
-        ),
+          SliverGap(15),
+          NotificationUnseenItemStack(
+            image: Assets.notificationImageSales,
+          )
+        ],
       ),
     );
   }
