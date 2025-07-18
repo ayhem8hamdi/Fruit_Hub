@@ -38,4 +38,8 @@ abstract class Assets {
   static const String profileIcon = 'assets/images/user.png';
   static const String activeProfileIcon =
       'assets/images/user_profile_active_icon.png';
+  static const String notificationImageSales =
+      'assets/images/notofication_image_1_sale.png';
+  static const String notificationImagePourcentage =
+      'assets/images/notification_image_2_pourcentage.png';
 }
