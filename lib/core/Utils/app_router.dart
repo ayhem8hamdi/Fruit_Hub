@@ -7,6 +7,7 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/recover_pass
 import 'package:advanced_ecommerce/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/home_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/most_popular_product_screen.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/notif_screen.dart';
 import 'package:get/get.dart';
 
 abstract class AppRouter {
@@ -14,6 +15,7 @@ abstract class AppRouter {
   static String onBoardingScreen = "/onBoardingScreen";
   static String homeScreen = "/homeScreen";
   static String mostPopularScreen = "/homeScreen/mostPopularScreen";
+  static String notifScreen = "/homeScreen/notifScreen";
   static String loginScreen = "/loginScreen";
   static String signUpScreen = "/loginScreen/signUpScreen";
   static String passwordForgotScreen = "/loginScreen/passwordForgot";
@@ -58,6 +60,10 @@ abstract class AppRouter {
       GetPage(
         name: mostPopularScreen,
         page: () => const MostPopularProductScreen(),
+      ),
+      GetPage(
+        name: notifScreen,
+        page: () => const NotifScreen(),
       ),
     ];
   }
