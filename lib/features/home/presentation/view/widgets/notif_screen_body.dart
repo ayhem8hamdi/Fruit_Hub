@@ -16,7 +16,7 @@ class NotifScreenBody extends StatelessWidget {
           CustomMostPopularProductAppbar(title: 'الاشعارات'),
           SliverGap(16),
           NotifScreenTitlesTextRow(),
-          SliverGap(16),
+          SliverGap(32),
           NotificationItem()
         ],
       ),
@@ -29,33 +29,73 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Image.asset(Assets.notificationImageSales),
-      title: RichText(
-        text: TextSpan(
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextSpan(
-              text: 'خصم ',
-              style: AppStyles.styleSemiBold16(context)
-                  .copyWith(color: Colors.black),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 56,
+                height: 56,
+                child: Transform.scale(
+                  scale: 1.3,
+                  child: Image.asset(
+                    Assets.notificationImageSales,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
-            TextSpan(
-              text: '50%',
-              style: AppStyles.styleSemiBold16(context)
-                  .copyWith(color: const Color(0XFFEB5757)),
-            ),
-            TextSpan(
-              text: 'علي اسعار الفواكه بمناسبه العيد',
-              style: AppStyles.styleSemiBold16(context)
-                  .copyWith(color: Colors.black),
+            const SizedBox(width: 18),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'خصم ',
+                                style: AppStyles.styleSemiBold16(context)
+                                    .copyWith(color: Colors.black),
+                              ),
+                              TextSpan(
+                                text: '50%',
+                                style: AppStyles.styleSemiBold16(context)
+                                    .copyWith(color: const Color(0XFFEB5757)),
+                              ),
+                              TextSpan(
+                                text: ' علي اسعار الفواكه بمناسبه العيد',
+                                style: AppStyles.styleSemiBold16(context)
+                                    .copyWith(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text(
+                          '9 صباحا',
+                          style: AppStyles.styleRegular13(context).copyWith(
+                            color: const Color(0XFF949D9E),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
-        ),
-      ),
-      trailing: Text(
-        '9 صباحا',
-        style: AppStyles.styleRegular13(context).copyWith(
-          color: const Color(0XFF949D9E),
         ),
       ),
     );
