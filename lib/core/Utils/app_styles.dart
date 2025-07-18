@@ -59,4 +59,10 @@ abstract class AppStyles {
         fontSize: responsiveFontSize(context, fontSize: 13),
         fontWeight: FontWeight.w400,
       );
+  static TextStyle styleSemiBold11(BuildContext context) =>
+      _baseCairo(context).copyWith(
+        color: AppColors.kPrimaryColor,
+        fontSize: responsiveFontSize(context, fontSize: 11),
+        fontWeight: FontWeight.w600,
+      );
 }

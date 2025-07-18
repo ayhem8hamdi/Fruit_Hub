@@ -27,4 +27,15 @@ abstract class Assets {
   static const String fraise = 'assets/images/fraise.svg';
   static const String fraisePng = 'assets/images/fraise_png.png';
   static const String addIcon = 'assets/images/add_icon.png';
+  static const String homeIcon = 'assets/images/home.png';
+  static const String homeActiveIcon = 'assets/images/home_active_icon.png';
+  static const String productsIcon = 'assets/images/products.png';
+  static const String productsActiveIcon =
+      'assets/images/product_active_icon.png';
+  static const String shoppingCardIcon = 'assets/images/shopping_cart.png';
+  static const String shoppingCardActiveIcon =
+      'assets/images/active_card_item.png';
+  static const String profileIcon = 'assets/images/user.png';
+  static const String activeProfileIcon =
+      'assets/images/user_profile_active_icon.png';
 }

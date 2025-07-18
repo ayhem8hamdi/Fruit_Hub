@@ -10,16 +10,18 @@ class MostPopularProductScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      slivers: [
-        CustomMostPopularProductAppbar(
-          title: 'الأكثر مبيعًا',
-        ),
-        SliverGap(24),
-        MostPopularProductTitle(),
-        SliverGap(14),
-        FruitItemGridDelegateBuilder()
-      ],
+    return const SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          CustomMostPopularProductAppbar(
+            title: 'الأكثر مبيعًا',
+          ),
+          SliverGap(24),
+          MostPopularProductTitle(),
+          SliverGap(14),
+          FruitItemGridDelegateBuilder()
+        ],
+      ),
     );
   }
 }
