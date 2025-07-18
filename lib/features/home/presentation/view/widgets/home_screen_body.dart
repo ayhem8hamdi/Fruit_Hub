@@ -11,20 +11,22 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      slivers: [
-        HomeScreenUserListTile(),
-        SliverGap(16),
-        CustomSearchTextField(hintText: 'ابحث عن.......'),
-        SliverGap(12),
-        SliverToBoxAdapter(
-          child: FruitDiscountWidget(),
-        ),
-        SliverGap(14),
-        BestSellerTitlesLine(),
-        SliverGap(12),
-        FruitItemGridDelegateBuilder(),
-      ],
+    return const SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          HomeScreenUserListTile(),
+          SliverGap(16),
+          CustomSearchTextField(hintText: 'ابحث عن.......'),
+          SliverGap(12),
+          SliverToBoxAdapter(
+            child: FruitDiscountWidget(),
+          ),
+          SliverGap(14),
+          BestSellerTitlesLine(),
+          SliverGap(12),
+          FruitItemGridDelegateBuilder(),
+        ],
+      ),
     );
   }
 }
