@@ -1,6 +1,6 @@
 import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/notification_item.dart';
+import 'package:advanced_ecommerce/features/notifications/presentation/views/widgets/notification_item.dart';
 import 'package:flutter/material.dart';
 
 class NotificationUnseenItemStack extends StatelessWidget {

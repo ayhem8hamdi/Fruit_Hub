@@ -1,5 +1,5 @@
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_bottom_nav_bar.dart';
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/notif_screen_body.dart';
+import 'package:advanced_ecommerce/core/Utils/custom_bottom_nav_bar.dart';
+import 'package:advanced_ecommerce/features/notifications/presentation/views/widgets/notif_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class NotifScreen extends StatefulWidget {
