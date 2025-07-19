@@ -42,4 +42,6 @@ abstract class Assets {
       'assets/images/notofication_image_1_sale.png';
   static const String notificationImagePourcentage =
       'assets/images/notification_image_2_pourcentage.png';
+  static const String cameraIcon = 'assets/images/camera_icon.png';
+  static const String userProfileImage = 'assets/images/user_profile_image.png';
 }

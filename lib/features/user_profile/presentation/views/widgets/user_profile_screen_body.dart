@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/custom_user_appbar.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/user_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -9,7 +10,11 @@ class UserProfileScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: CustomScrollView(
-        slivers: [CustomUserAppBar(), SliverGap(16)],
+        slivers: [
+          CustomUserAppBar(),
+          SliverGap(16),
+          UserProfileImage(),
+        ],
       ),
     );
   }
