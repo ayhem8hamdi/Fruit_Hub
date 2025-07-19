@@ -44,4 +44,11 @@ abstract class Assets {
       'assets/images/notification_image_2_pourcentage.png';
   static const String cameraIcon = 'assets/images/camera_icon.png';
   static const String userProfileImage = 'assets/images/user_profile_image.png';
+  static const String boxIcon = 'assets/images/box.png';
+  static const String waletIcon = 'assets/images/empty-wallet.png';
+  static const String languageIcon = 'assets/images/global.png';
+  static const String favouritesIcon = 'assets/images/heart.png';
+  static const String infoCircleIcon = 'assets/images/info-circle.png';
+  static const String magicienPenIcon = 'assets/images/magicienpen.png';
+  static const String notificationsMenuIcon = 'assets/images/notification.png';
 }

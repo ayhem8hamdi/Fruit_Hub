@@ -24,3 +24,23 @@ class UserProfileScreenBody extends StatelessWidget {
     );
   }
 }
+
+class UserProfileParameterMenuItem extends StatelessWidget {
+  const UserProfileParameterMenuItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            Row(
+              children: [],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
