@@ -9,30 +9,26 @@ class UserProfileImage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final imageWidth = screenWidth * 0.211594203;
 
-    return SliverToBoxAdapter(
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            minWidth: 60,
-            maxWidth: 88,
-          ),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    Assets.userProfileImage,
-                    width: imageWidth,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned(bottom: -8, child: Image.asset(Assets.cameraIcon)),
-              ],
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        minWidth: 60,
+        maxWidth: 88,
+      ),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.center,
+          children: [
+            ClipOval(
+              child: Image.asset(
+                Assets.userProfileImage,
+                width: imageWidth,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
+            Positioned(bottom: -8, child: Image.asset(Assets.cameraIcon)),
+          ],
         ),
       ),
     );
