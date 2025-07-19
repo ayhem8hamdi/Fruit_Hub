@@ -17,8 +17,11 @@ class HomeScreenUserListTile extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
           leading: Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Image.asset(
-              Assets.userImage,
+            child: GestureDetector(
+              onTap: () => Get.toNamed(AppRouter.userProfileScreen),
+              child: Image.asset(
+                Assets.userImage,
+              ),
             ),
           ),
           title: Padding(

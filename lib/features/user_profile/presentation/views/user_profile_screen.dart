@@ -20,6 +20,5 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         onTap: (i) => setState(() => _currentIndex = i),
       ),
     );
-    ;
   }
 }
