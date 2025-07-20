@@ -54,4 +54,5 @@ abstract class Assets {
   static const String leftDirectedBackArrowIcon =
       'assets/images/left_directed_back_arrow.png';
   static const String menuUser = 'assets/images/menu_user.png';
+  static const String logOutIcon = 'assets/images/log_out_icon.png';
 }

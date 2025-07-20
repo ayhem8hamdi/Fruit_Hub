@@ -109,6 +109,7 @@ class MenuItemWithTextWidget extends StatelessWidget {
                   style: AppStyles.styleRegular13(context)
                       .copyWith(color: Colors.black),
                 ),
+                const Gap(3),
                 Image.asset(Assets.leftDirectedBackArrowIcon, width: 14),
               ],
             ),

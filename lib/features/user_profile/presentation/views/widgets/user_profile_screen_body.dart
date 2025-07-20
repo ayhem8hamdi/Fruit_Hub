@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/custom_user_appbar.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/log_out_button.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/menu_item_bottom_section.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/menu_item_list_view_builder.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/user_profile_account_info_row.dart';
@@ -31,7 +32,9 @@ class UserProfileScreenBody extends StatelessWidget {
           ),
           SliverGap(14),
           WhoAreWeSection(),
-          SliverGap(57),
+          SliverGap(50),
+          LogOutButton(),
+          SliverGap(30),
         ],
       ),
     );
