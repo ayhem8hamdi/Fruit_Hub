@@ -10,7 +10,7 @@ class UserProfileAccountInfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         child: Row(
           children: [
             const UserProfileImage(),
