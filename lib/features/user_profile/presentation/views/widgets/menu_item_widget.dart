@@ -1,6 +1,7 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/features/user_profile/data/models/user_profile_parameter_menu.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/custom_menu_text.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/switch_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -78,29 +79,6 @@ class MenuItemWithToggleButton extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ToggleButton extends StatefulWidget {
-  const ToggleButton({super.key});
-
-  @override
-  State<ToggleButton> createState() => _ToggleButtonState();
-}
-
-class _ToggleButtonState extends State<ToggleButton> {
-  bool isSwitched = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-      value: isSwitched,
-      onChanged: (value) {
-        setState(() {
-          isSwitched = value;
-        });
-      },
     );
   }
 }
