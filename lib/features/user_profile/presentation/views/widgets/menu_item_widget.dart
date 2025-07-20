@@ -54,30 +54,28 @@ class MenuItemWithToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: GestureDetector(
-        onTap: item.onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Image.asset(item.image),
-                  const Gap(7),
-                  CustomMenuText(text: item.title),
-                  const Spacer(),
-                  const ToggleButton()
-                ],
-              ),
-              const Gap(5),
-              const Divider(
-                thickness: 1.4,
-                color: Color(0xFFF2F3F3),
-              ),
-              const Gap(4)
-            ],
-          ),
+    return GestureDetector(
+      onTap: item.onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Image.asset(item.image),
+                const Gap(7),
+                CustomMenuText(text: item.title),
+                const Spacer(),
+                const ToggleButton()
+              ],
+            ),
+            const Gap(5),
+            const Divider(
+              thickness: 1.4,
+              color: Color(0xFFF2F3F3),
+            ),
+            const Gap(4)
+          ],
         ),
       ),
     );

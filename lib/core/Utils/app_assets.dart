@@ -49,7 +49,7 @@ abstract class Assets {
   static const String languageIcon = 'assets/images/global.png';
   static const String favouritesIcon = 'assets/images/heart.png';
   static const String infoCircleIcon = 'assets/images/info-circle.png';
-  static const String magicienPenIcon = 'assets/images/magicienpen.png';
+  static const String magicienPenIcon = 'assets/images/magicpen.png';
   static const String notificationsMenuIcon = 'assets/images/notification.png';
   static const String leftDirectedBackArrowIcon =
       'assets/images/left_directed_back_arrow.png';
