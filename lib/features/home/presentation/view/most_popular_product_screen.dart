@@ -1,26 +1,11 @@
-import 'package:advanced_ecommerce/core/Utils/custom_bottom_nav_bar.dart';
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/most_popular_product_screen_body.dart';
+import 'package:advanced_ecommerce/core/Utils/base_screen_with_nav.dart';
 import 'package:flutter/material.dart';
 
-class MostPopularProductScreen extends StatefulWidget {
+class MostPopularProductScreen extends StatelessWidget {
   const MostPopularProductScreen({super.key});
 
   @override
-  State<MostPopularProductScreen> createState() =>
-      _MostPopularProductScreenState();
-}
-
-class _MostPopularProductScreenState extends State<MostPopularProductScreen> {
-  int _currentIndex = 0;
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const MostPopularProductScreenBody(),
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: (i) => setState(() => _currentIndex = i),
-      ),
-    );
+    return const BaseScreenWithNav(initialIndex: 0);
   }
 }
