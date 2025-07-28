@@ -11,13 +11,14 @@ class OurProductsTitleAndSortingIconLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               text,
-              style: AppStyles.styleBold16(context),
+              style:
+                  AppStyles.styleBold16(context).copyWith(color: Colors.black),
             ),
             SvgPicture.asset(image)
           ],
