@@ -1,10 +1,13 @@
+import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_arrow_back.dart';
 import 'package:flutter/material.dart';
 
 class CustomAuthAppbar extends StatelessWidget {
-  const CustomAuthAppbar({super.key, required this.title});
+  const CustomAuthAppbar(
+      {super.key, this.isCardAppBar = false, required this.title});
   final String title;
+  final bool isCardAppBar;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -18,9 +21,11 @@ class CustomAuthAppbar extends StatelessWidget {
               style: AppStyles.styleBold19(context),
             ),
           ),
-          const Align(
+          Align(
             alignment: Alignment.centerRight,
-            child: AuthAppBarCustomIcon(),
+            child: isCardAppBar == false
+                ? const AuthAppBarCustomIcon()
+                : Image.asset(Assets.unborderedBackArrow),
           ),
         ],
       ),

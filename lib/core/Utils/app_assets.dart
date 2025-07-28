@@ -59,4 +59,7 @@ abstract class Assets {
   static const String ananasIcon = 'assets/images/ananas_png_icon.png';
   static const String waterMelonImage =
       'assets/images/cart_water_melon_icon.png';
+
+  static const String unborderedBackArrow =
+      'assets/images/unbordered_arrow_back.png';
 }
