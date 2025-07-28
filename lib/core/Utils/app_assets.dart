@@ -55,4 +55,5 @@ abstract class Assets {
       'assets/images/left_directed_back_arrow.png';
   static const String menuUser = 'assets/images/menu_user.png';
   static const String logOutIcon = 'assets/images/log_out_icon.png';
+  static const String trierIcon = 'assets/images/trier_icon.svg';
 }
