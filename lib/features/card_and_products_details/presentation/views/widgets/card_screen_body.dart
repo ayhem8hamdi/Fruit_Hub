@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
+import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/number_of_selected_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
@@ -13,6 +14,8 @@ class CardScreenBody extends StatelessWidget {
         slivers: [
           CustomCardAppBar(),
           SliverGap(16),
+          NumberOfSelectedProductsText(),
+          SliverGap(24),
         ],
       ),
     );
