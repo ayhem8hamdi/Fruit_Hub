@@ -62,4 +62,11 @@ abstract class Assets {
 
   static const String unborderedBackArrow =
       'assets/images/unbordered_arrow_back.png';
+
+  static const String addProductIcon = 'assets/images/add_product_icon.png';
+
+  static const String removeProductIcon =
+      'assets/images/remove_product_icon.png';
+
+  static const String deleteProductIcon = 'assets/images/trash.png';
 }

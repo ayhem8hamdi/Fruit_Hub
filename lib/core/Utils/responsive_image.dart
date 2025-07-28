@@ -37,19 +37,16 @@ class ResponsiveImage extends StatelessWidget {
       width: clampedWidth,
       child: AspectRatio(
         aspectRatio: imageDesignAspectRatio,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(0), // Optional
-          child: imageProvider != null
-              ? Image(image: imageProvider!, fit: fit)
-              : FittedBox(
-                  fit: fit,
-                  clipBehavior: Clip.hardEdge,
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(),
-                    child: customImageWidget ?? const SizedBox.shrink(),
-                  ),
+        child: imageProvider != null
+            ? Image(image: imageProvider!, fit: fit)
+            : FittedBox(
+                fit: fit,
+                clipBehavior: Clip.hardEdge,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(),
+                  child: customImageWidget ?? const SizedBox.shrink(),
                 ),
-        ),
+              ),
       ),
     );
   }
