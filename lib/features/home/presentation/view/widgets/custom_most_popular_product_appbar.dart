@@ -13,7 +13,9 @@ class CustomMostPopularProductAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: isBackArrowHidden == false
+            ? const EdgeInsets.symmetric(horizontal: 16)
+            : const EdgeInsets.only(left: 16),
         child: SizedBox(
           height: 56,
           child: Stack(

@@ -1,5 +1,7 @@
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_most_popular_product_appbar.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_search_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class ProductsScreenBody extends StatelessWidget {
   const ProductsScreenBody({super.key});
@@ -12,7 +14,10 @@ class ProductsScreenBody extends StatelessWidget {
           CustomMostPopularProductAppbar(
             title: 'المنتجات',
             isBackArrowHidden: true,
-          )
+          ),
+          SliverGap(16),
+          CustomSearchTextField(hintText: 'ابحث عن.......'),
+          SliverGap(16),
         ],
       ),
     );
