@@ -5,8 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomMostPopularProductAppbar extends StatelessWidget {
-  const CustomMostPopularProductAppbar({super.key, required this.title});
+  const CustomMostPopularProductAppbar(
+      {super.key, this.isBackArrowHidden = false, required this.title});
   final String title;
+  final bool isBackArrowHidden;
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -23,10 +25,12 @@ class CustomMostPopularProductAppbar extends StatelessWidget {
                   style: AppStyles.styleBold19(context),
                 ),
               ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: AuthAppBarCustomIcon(),
-              ),
+              isBackArrowHidden == false
+                  ? const Align(
+                      alignment: Alignment.centerRight,
+                      child: AuthAppBarCustomIcon(),
+                    )
+                  : const SizedBox.shrink(),
               Align(
                 alignment: Alignment.centerLeft,
                 child: SvgPicture.asset(
