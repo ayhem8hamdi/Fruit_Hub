@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class ResponsiveImage extends StatelessWidget {
@@ -34,7 +32,7 @@ class ResponsiveImage extends StatelessWidget {
       minWidth ?? imageDesignWidth * 0.8,
       maxWidth ?? imageDesignWidth * 1.3,
     );
-    log('$clampedWidth');
+
     return SizedBox(
       width: clampedWidth,
       child: AspectRatio(
