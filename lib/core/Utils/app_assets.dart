@@ -56,5 +56,7 @@ abstract class Assets {
   static const String menuUser = 'assets/images/menu_user.png';
   static const String logOutIcon = 'assets/images/log_out_icon.png';
   static const String trierIcon = 'assets/images/trier_icon.svg';
-  static const String ananasIcon = 'assets/images/ananas_with_grey_bg.svg';
+  static const String ananasIcon = 'assets/images/ananas_png_icon.png';
+  static const String waterMelonImage =
+      'assets/images/cart_water_melon_icon.png';
 }

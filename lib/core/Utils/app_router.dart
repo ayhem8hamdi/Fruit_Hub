@@ -5,6 +5,7 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/login_screen
 import 'package:advanced_ecommerce/features/auth/presentation/views/password_forgot_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/recover_password_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/sign_up_screen.dart';
+import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/card_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/home_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/most_popular_product_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/products_screen.dart';
@@ -16,6 +17,7 @@ abstract class AppRouter {
   static String splashScreen = "/";
   static String onBoardingScreen = "/onBoardingScreen";
   static String homeScreen = "/homeScreen";
+  static String cardScreen = "/cardScreen";
   static String mostPopularScreen = "/homeScreen/mostPopularScreen";
   static String notifScreen = "/homeScreen/notifScreen";
   static String userProfileScreen = "/homeScreen/userProfileScreen";
@@ -77,6 +79,10 @@ abstract class AppRouter {
       GetPage(
         name: productsScreen,
         page: () => const ProductsScreen(),
+      ),
+      GetPage(
+        name: cardScreen,
+        page: () => const CardScreen(),
       )
     ];
   }
