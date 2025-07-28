@@ -19,7 +19,6 @@ class ResponsiveHorizontalRowList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      reverse: true,
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
