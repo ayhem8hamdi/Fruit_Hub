@@ -22,6 +22,31 @@ class ResponsiveImage extends StatelessWidget {
     this.minWidth,
   });
 
+  static double getTotalHeight({
+    required BuildContext context,
+    required double imageDesignWidth,
+    required double screenDesignWidth,
+    required double imageDesignAspectRatio,
+    double dividerThickness = 0.45,
+    double dividerHeight = 4.5,
+  }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    final responsiveWidth =
+        (imageDesignWidth / screenDesignWidth) * screenWidth;
+
+    final clampedWidth = responsiveWidth.clamp(
+      imageDesignWidth * 0.8,
+      imageDesignWidth * 1.3,
+    );
+
+    final imageHeight = clampedWidth / imageDesignAspectRatio;
+
+    final totalDividersHeight = 2 * dividerHeight;
+
+    return imageHeight + totalDividersHeight;
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;

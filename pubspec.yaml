@@ -55,6 +55,7 @@ dependencies:
   flutter_custom_clippers: ^2.1.0
   salomon_bottom_bar: ^3.3.2
   flutter_switch: ^0.3.2
+  measured: ^0.1.0
 
 dev_dependencies:
   flutter_test:
