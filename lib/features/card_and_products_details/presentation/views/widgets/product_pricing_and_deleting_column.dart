@@ -11,7 +11,6 @@ class PricingAndDeletingColumn extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 7),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Image.asset(Assets.deleteProductIcon),

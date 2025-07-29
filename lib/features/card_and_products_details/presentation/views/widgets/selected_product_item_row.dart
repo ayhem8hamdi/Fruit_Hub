@@ -32,10 +32,10 @@ class SelectedProductItemRow extends StatelessWidget {
             SizedBox(width: 12),
             Expanded(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   QuantityAndProductNameColumn(),
-                  Spacer(),
                   PricingAndDeletingColumn(),
                 ],
               ),

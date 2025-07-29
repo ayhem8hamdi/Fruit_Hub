@@ -7,27 +7,24 @@ class QuantityAndProductNameColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(right: 14, top: 7, bottom: 7),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'بطيخ',
-              style: AppStyles.styleBold13(context)
-                  .copyWith(color: const Color(0XFF06161C)),
-            ),
-            Text(
-              '3 كم',
-              style: AppStyles.styleRegular13(context)
-                  .copyWith(color: const Color(0XFFF4A91F)),
-            ),
-            const ProductQuantitySection(),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(right: 14, top: 7, bottom: 7),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'بطيخ',
+            style: AppStyles.styleBold13(context)
+                .copyWith(color: const Color(0XFF06161C)),
+          ),
+          Text(
+            '3 كم',
+            style: AppStyles.styleRegular13(context)
+                .copyWith(color: const Color(0XFFF4A91F)),
+          ),
+          const ProductQuantitySection(),
+        ],
       ),
     );
   }
