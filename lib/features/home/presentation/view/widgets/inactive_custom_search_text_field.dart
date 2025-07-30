@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
@@ -7,8 +5,8 @@ import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custo
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_search_bar_icon.dart';
 import 'package:flutter/material.dart';
 
-class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({
+class InActiveCustomSearchTextField extends StatelessWidget {
+  const InActiveCustomSearchTextField({
     super.key,
     required this.hintText,
     this.controller,
@@ -27,8 +25,7 @@ class CustomSearchTextField extends StatelessWidget {
           readOnly: true,
           showCursor: false,
           onTap: () {
-            // Optional: handle tap here instead of GestureDetector
-            log('tapped 2');
+            Navigator.of(context).pushNamed('/tab/home/searchScreen');
           },
           style: AppStyles.styleSemiBold16(context)
               .copyWith(color: const Color(0xFF0C0D0D)),

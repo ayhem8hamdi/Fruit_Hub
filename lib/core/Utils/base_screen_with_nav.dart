@@ -4,6 +4,7 @@ import 'package:advanced_ecommerce/features/home/presentation/view/widgets/most_
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/products_screen_body.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/card_screen_body.dart';
 import 'package:advanced_ecommerce/features/notifications/presentation/views/widgets/notif_screen_body.dart';
+import 'package:advanced_ecommerce/features/search/presentaion/views/widgets/search_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/user_profile_screen_body.dart';
 import 'package:flutter/material.dart';
 
@@ -100,6 +101,10 @@ class _BaseScreenWithNavState extends State<BaseScreenWithNav> {
 
           case '/tab/home/notifScreen':
             builder = (_) => const Scaffold(body: NotifScreenBody());
+            break;
+
+          case '/tab/home/searchScreen':
+            builder = (_) => const Scaffold(body: SearchScreenBody());
             break;
 
           // PRODUCTS tab

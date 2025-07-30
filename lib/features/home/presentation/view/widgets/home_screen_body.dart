@@ -1,5 +1,5 @@
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/best_seller_titles_line.dart';
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_search_text_field.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/inactive_custom_search_text_field.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit_discount_widget.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit_item_grid_delegate_builder.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/home_screen_user_list_tile.dart';
@@ -16,7 +16,7 @@ class HomeScreenBody extends StatelessWidget {
         slivers: [
           HomeScreenUserListTile(),
           SliverGap(16),
-          CustomSearchTextField(hintText: 'ابحث عن.......'),
+          InActiveCustomSearchTextField(hintText: 'ابحث عن.......'),
           SliverGap(12),
           SliverToBoxAdapter(
             child: FruitDiscountWidget(),
