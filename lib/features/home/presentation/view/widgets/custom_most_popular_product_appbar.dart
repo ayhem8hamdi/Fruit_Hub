@@ -35,9 +35,13 @@ class CustomMostPopularProductAppbar extends StatelessWidget {
                   : const SizedBox.shrink(),
               Align(
                 alignment: Alignment.centerLeft,
-                child: SvgPicture.asset(
-                  Assets.notifIcon,
-                  fit: BoxFit.fill,
+                child: GestureDetector(
+                  onTap: () => Navigator.of(context)
+                      .pushNamed('/tab/home/mostPopular/notifScreen'),
+                  child: SvgPicture.asset(
+                    Assets.notifIcon,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               )
             ],

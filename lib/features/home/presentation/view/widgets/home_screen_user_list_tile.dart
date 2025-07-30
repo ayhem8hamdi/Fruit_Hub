@@ -17,11 +17,8 @@ class HomeScreenUserListTile extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
           leading: Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: GestureDetector(
-              onTap: () => Get.toNamed(AppRouter.userProfileScreen),
-              child: Image.asset(
-                Assets.userImage,
-              ),
+            child: Image.asset(
+              Assets.userImage,
             ),
           ),
           title: Padding(
@@ -37,7 +34,8 @@ class HomeScreenUserListTile extends StatelessWidget {
                 .copyWith(color: const Color(0XFF0C0D0D)),
           ),
           trailing: GestureDetector(
-            onTap: () => Get.toNamed(AppRouter.notifScreen),
+            onTap: () =>
+                Navigator.of(context).pushNamed('/tab/home/notifScreen'),
             child: SvgPicture.asset(
               Assets.notifIcon,
               fit: BoxFit.fill,
