@@ -12,10 +12,6 @@ import 'package:advanced_ecommerce/features/home/presentation/view/products_scre
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/most_popular_product_screen_body.dart';
 import 'package:advanced_ecommerce/features/notifications/presentation/views/notif_screen.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/user_profile_screen.dart';
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/home_screen_body.dart';
-import 'package:advanced_ecommerce/features/home/presentation/view/widgets/products_screen_body.dart';
-import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/card_screen_body.dart';
-import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/user_profile_screen_body.dart';
 import 'package:get/get.dart';
 
 abstract class AppRouter {
@@ -39,22 +35,33 @@ abstract class AppRouter {
   // 🔥 New nested navigation wrapper
   static String mainTabs = "/mainTabs";
 
-  // 🔀 Nested tab routes
-  static String tabHome = "/tab/home";
-  static String tabProducts = "/tab/products";
-  static String tabCart = "/tab/cart";
-  static String tabProfile = "/tab/profile";
-
   static List<GetPage<dynamic>>? getViews() {
     return [
       // Existing routes
-      GetPage(name: splashScreen, page: () => const SplashView()),
-      GetPage(name: onBoardingScreen, page: () => const OnBoardingView()),
-      GetPage(name: homeScreen, page: () => const HomeScreen()),
-      GetPage(name: loginScreen, page: () => const LoginScreen()),
-      GetPage(name: signUpScreen, page: () => const SignUpScreen()),
       GetPage(
-          name: passwordForgotScreen, page: () => const PasswordForgotScreen()),
+        name: splashScreen,
+        page: () => const SplashView(),
+      ),
+      GetPage(
+        name: onBoardingScreen,
+        page: () => const OnBoardingView(),
+      ),
+      GetPage(
+        name: homeScreen,
+        page: () => const HomeScreen(),
+      ),
+      GetPage(
+        name: loginScreen,
+        page: () => const LoginScreen(),
+      ),
+      GetPage(
+        name: signUpScreen,
+        page: () => const SignUpScreen(),
+      ),
+      GetPage(
+        name: passwordForgotScreen,
+        page: () => const PasswordForgotScreen(),
+      ),
       GetPage(
           name: recoverPasswordScreen,
           page: () => const RecoverPasswordScreen()),
@@ -75,12 +82,6 @@ abstract class AppRouter {
           page: () => const BaseScreenWithNav(
                 initialIndex: 0,
               )),
-
-      // ✅ NEW: Nested pages for each tab (no bindings here, keep logic external)
-      GetPage(name: tabHome, page: () => const HomeScreenBody()),
-      GetPage(name: tabProducts, page: () => const ProductsScreenBody()),
-      GetPage(name: tabCart, page: () => const CardScreenBody()),
-      GetPage(name: tabProfile, page: () => const UserProfileScreenBody()),
     ];
   }
 }
