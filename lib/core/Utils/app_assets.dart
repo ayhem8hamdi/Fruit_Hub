@@ -69,4 +69,10 @@ abstract class Assets {
       'assets/images/remove_product_icon.png';
 
   static const String deleteProductIcon = 'assets/images/trash.png';
+
+  static const String noResultFoundIcon =
+      'assets/images/no_result_found_search.svg';
+
+  static const String closeIcon = 'assets/images/Close.svg';
+  static const String clockTimeIcon = 'assets/images/clock_time.svg';
 }
