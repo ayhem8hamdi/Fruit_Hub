@@ -18,7 +18,8 @@ class LoginButtonBlocConsumer extends StatelessWidget {
             context,
             "SignUp Successful",
             () {
-              Get.toNamed(AppRouter.homeScreen);
+              Get.toNamed(AppRouter.mainTabs);
+
               //i will route to the next screen and send the user model as argument
             },
             isError: false,

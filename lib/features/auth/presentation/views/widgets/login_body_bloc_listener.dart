@@ -27,7 +27,7 @@ class LoginBodyBlocListener extends StatelessWidget {
               "تم تسجيل الدخول باستخدام جوجل بنجاح",
               () {
                 print('going to home screen');
-                Get.toNamed(AppRouter.homeScreen);
+                Get.toNamed(AppRouter.mainTabs);
               },
               isError: false,
             );

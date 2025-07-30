@@ -1,7 +1,6 @@
 import 'package:advanced_ecommerce/core/Utils/app_router.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 
 class BestSellerTitlesLine extends StatelessWidget {
   const BestSellerTitlesLine({super.key});
@@ -20,7 +19,8 @@ class BestSellerTitlesLine extends StatelessWidget {
             ),
             const Spacer(),
             GestureDetector(
-              onTap: () => Get.toNamed(AppRouter.mostPopularScreen),
+              onTap: () =>
+                  Navigator.of(context).pushNamed(AppRouter.mostPopularScreen),
               child: Text(
                 'المزيد',
                 style: AppStyles.styleRegular13(context)
