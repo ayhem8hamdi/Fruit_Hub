@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
