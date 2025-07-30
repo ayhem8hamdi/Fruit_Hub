@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/card_screen_button_widget.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/number_of_selected_products.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/selected_card_item_list.dart';
@@ -17,6 +18,8 @@ class CardScreenBody extends StatelessWidget {
           NumberOfSelectedProductsText(),
           SliverGap(24),
           SelectedcardItemsList(),
+          SliverGap(73),
+          CardScreenButtonWidget(),
         ],
       ),
     );

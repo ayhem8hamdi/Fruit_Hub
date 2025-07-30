@@ -7,12 +7,14 @@ class OnBoardingButton extends StatelessWidget {
   final VoidCallback? onTap;
   final String? text;
   final bool isLoading;
+  final double padding;
 
   const OnBoardingButton({
     super.key,
     this.isActive = true,
     this.onTap,
     this.text,
+    this.padding = 19,
     this.isLoading = false,
   });
 
@@ -26,7 +28,7 @@ class OnBoardingButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
         ),
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 19),
+        padding: EdgeInsets.symmetric(vertical: padding),
         child: isLoading
             ? const SizedBox(
                 height: 24,
