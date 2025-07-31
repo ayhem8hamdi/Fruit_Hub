@@ -2,9 +2,10 @@ import 'dart:developer';
 
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
+import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
-import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/custom_personal_data_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -42,19 +43,19 @@ class PersonalDataForm extends StatefulWidget {
 class _PersonalDataFormState extends State<PersonalDataForm> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
-    _passwordController.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 
-  void onLoginPressed() {
+  void onSaveChangesPressed() {
     if (_formKey.currentState?.validate() ?? false) {
       final email = _emailController.text.trim();
-      final password = _passwordController.text.trim();
+      final password = _nameController.text.trim();
       log('$email $password');
     }
   }
@@ -72,16 +73,14 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
                 .copyWith(color: Colors.black),
           ),
           const Gap(8),
-          CustomBorderTextField(
+          CustomPersonalDataTextField(
               hintText: 'أحمد ياسر',
-              controller: _emailController,
-              validator: MethodsHelper.validateEmail,
+              controller: _nameController,
               isItInProfileData: true),
           const Gap(8),
-          CustomBorderTextField(
+          CustomPersonalDataTextField(
               hintText: 'ahmedyacer@gmail.com',
               controller: _emailController,
-              validator: MethodsHelper.validateEmail,
               isItInProfileData: true),
           const Gap(16),
           Text(
@@ -98,7 +97,12 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
             hintText: 'كلمة المرور الجديده',
           ),
           const Gap(8),
-          const CustomPasswordTextField(hintText: 'تأكيد كلمة المرور الجديده')
+          const CustomPasswordTextField(hintText: 'تأكيد كلمة المرور الجديده'),
+          const Gap(70),
+          OnBoardingButton(
+            text: 'حفظ التغييرات',
+            onTap: onSaveChangesPressed,
+          )
         ],
       ),
     );
