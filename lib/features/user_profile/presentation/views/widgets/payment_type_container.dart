@@ -2,9 +2,8 @@ import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class PaymentTypeContainer extends StatelessWidget {
-  const PaymentTypeContainer(
-      {super.key, required this.text, required this.icon});
+class PaymentTypeItem extends StatelessWidget {
+  const PaymentTypeItem({super.key, required this.text, required this.icon});
   final String text;
   final String icon;
   @override
