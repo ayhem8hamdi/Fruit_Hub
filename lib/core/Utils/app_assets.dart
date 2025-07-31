@@ -77,4 +77,7 @@ abstract class Assets {
   static const String clockTimeIcon = 'assets/images/clock_time.svg';
 
   static const String editIcon = 'assets/images/Edit.svg';
+
+  static const String paymentOneIcon = 'assets/images/payment1.svg';
+  static const String paymentTwoIcon = 'assets/images/payment2.svg';
 }

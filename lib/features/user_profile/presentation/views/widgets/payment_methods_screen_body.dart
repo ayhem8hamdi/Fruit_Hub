@@ -1,5 +1,6 @@
+import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
-import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/personal_data_change_form.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/payment_type_container.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -14,13 +15,10 @@ class PaymentMethodsScreenBody extends StatelessWidget {
           CustomCardAppBar(
             title: 'المدفوعات',
           ),
-          SliverGap(24),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: PersonalDataChangeForm(),
-            ),
-          )
+          SliverGap(16),
+          PaymentTypeContainer(text: '**** 1234 ', icon: Assets.paymentOneIcon),
+          SliverGap(12),
+          PaymentTypeContainer(text: '**** 4887 ', icon: Assets.paymentTwoIcon),
         ],
       ),
     );
