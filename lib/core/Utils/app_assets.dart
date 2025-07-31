@@ -75,4 +75,6 @@ abstract class Assets {
 
   static const String closeIcon = 'assets/images/Close.svg';
   static const String clockTimeIcon = 'assets/images/clock_time.svg';
+
+  static const String editIcon = 'assets/images/Edit.svg';
 }

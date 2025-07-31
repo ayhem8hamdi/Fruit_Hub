@@ -25,7 +25,13 @@ class CustomAuthAppbar extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: isCardAppBar == false
                 ? const AuthAppBarCustomIcon()
-                : Image.asset(Assets.unborderedBackArrow),
+                : GestureDetector(
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: Image.asset(Assets.unborderedBackArrow)),
           ),
         ],
       ),

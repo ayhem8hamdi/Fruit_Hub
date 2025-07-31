@@ -13,7 +13,9 @@ class CardScreenBody extends StatelessWidget {
     return const SafeArea(
       child: CustomScrollView(
         slivers: [
-          CustomCardAppBar(),
+          CustomCardAppBar(
+            title: 'السلة',
+          ),
           SliverGap(16),
           NumberOfSelectedProductsText(),
           SliverGap(24),

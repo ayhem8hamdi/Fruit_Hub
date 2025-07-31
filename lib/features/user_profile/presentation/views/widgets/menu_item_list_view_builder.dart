@@ -6,39 +6,38 @@ import 'package:flutter/material.dart';
 class MenuItemListViewBuilder extends StatelessWidget {
   const MenuItemListViewBuilder({super.key});
 
-  static List<UserProfileParameterMenu> items = [
-    UserProfileParameterMenu(
-      image: Assets.menuUser,
-      title: 'الملف الشخصي',
-      onTap: () {
-        debugPrint('Navigate to profile');
-      },
-    ),
-    UserProfileParameterMenu(
-      image: Assets.boxIcon,
-      title: 'طلباتي',
-      onTap: () {
-        debugPrint('Navigate to orders');
-      },
-    ),
-    UserProfileParameterMenu(
-      image: Assets.waletIcon,
-      title: 'المدفوعات',
-      onTap: () {
-        debugPrint('Navigate to favorites');
-      },
-    ),
-    UserProfileParameterMenu(
-      image: Assets.favouritesIcon,
-      title: 'المفضلة',
-      onTap: () {
-        debugPrint('Navigate to favorites');
-      },
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List<UserProfileParameterMenu> items = [
+      UserProfileParameterMenu(
+        image: Assets.menuUser,
+        title: 'الملف الشخصي',
+        onTap: () {
+          Navigator.of(context).pushNamed('/tab/profile/personalData');
+        },
+      ),
+      UserProfileParameterMenu(
+        image: Assets.boxIcon,
+        title: 'طلباتي',
+        onTap: () {
+          debugPrint('Navigate to orders');
+        },
+      ),
+      UserProfileParameterMenu(
+        image: Assets.waletIcon,
+        title: 'المدفوعات',
+        onTap: () {
+          debugPrint('Navigate to favorites');
+        },
+      ),
+      UserProfileParameterMenu(
+        image: Assets.favouritesIcon,
+        title: 'المفضلة',
+        onTap: () {
+          debugPrint('Navigate to favorites');
+        },
+      ),
+    ];
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: items.length,

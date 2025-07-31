@@ -5,6 +5,7 @@ import 'package:advanced_ecommerce/features/home/presentation/view/widgets/produ
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/card_screen_body.dart';
 import 'package:advanced_ecommerce/features/notifications/presentation/views/widgets/notif_screen_body.dart';
 import 'package:advanced_ecommerce/features/search/presentaion/views/widgets/search_screen_body.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/personal_data_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/user_profile_screen_body.dart';
 import 'package:flutter/material.dart';
 
@@ -120,6 +121,9 @@ class _BaseScreenWithNavState extends State<BaseScreenWithNav> {
           // PROFILE tab
           case '/tab/profile':
             builder = (_) => const Scaffold(body: UserProfileScreenBody());
+            break;
+          case '/tab/profile/personalData':
+            builder = (_) => const Scaffold(body: PersonalDataScreenBody());
             break;
 
           default:

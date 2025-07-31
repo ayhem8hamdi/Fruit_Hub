@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 class CustomCardAppBar extends StatelessWidget {
   const CustomCardAppBar({
     super.key,
+    required this.title,
   });
-
+  final String title;
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: CustomAuthAppbar(
-          title: 'السلة',
+          title: title,
           isCardAppBar: true,
         ),
       ),
