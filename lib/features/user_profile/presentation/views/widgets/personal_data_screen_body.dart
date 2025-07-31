@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/core/Utils/methods_helper.dart';
-import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
+import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +83,22 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
               controller: _emailController,
               validator: MethodsHelper.validateEmail,
               isItInProfileData: true),
+          const Gap(16),
+          Text(
+            'تغيير كلمة المرور',
+            style: AppStyles.styleSemiBold13(context)
+                .copyWith(color: Colors.black),
+          ),
+          const Gap(8),
+          const CustomPasswordTextField(
+            hintText: 'كلمة المرور الحالي',
+          ),
+          const Gap(8),
+          const CustomPasswordTextField(
+            hintText: 'كلمة المرور الجديده',
+          ),
+          const Gap(8),
+          const CustomPasswordTextField(hintText: 'تأكيد كلمة المرور الجديده')
         ],
       ),
     );

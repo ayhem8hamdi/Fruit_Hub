@@ -4,13 +4,13 @@ import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 
 class CustomPasswordTextField extends StatefulWidget {
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
 
   const CustomPasswordTextField({
     super.key,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.validator,
   });
 
@@ -46,15 +46,15 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
         ),
         filled: true,
         fillColor: const Color(0xFFF9FAFA),
-        suffixIcon: IconButton(
-          icon: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Icon(
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(left: 7),
+          child: IconButton(
+            icon: Icon(
               _obscureText ? Icons.visibility_off : Icons.visibility,
               color: Colors.grey,
             ),
+            onPressed: _toggleVisibility,
           ),
-          onPressed: _toggleVisibility,
         ),
         enabledBorder: MethodsHelper.enabledFocusedBorder(),
         focusedBorder: MethodsHelper.enabledFocusedBorder(),
