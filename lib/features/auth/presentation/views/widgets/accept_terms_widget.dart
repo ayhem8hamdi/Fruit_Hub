@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 class AcceptTermsWidget extends StatelessWidget {
   final bool isAccepted;
   final ValueChanged<bool?> onChanged;
-
-  const AcceptTermsWidget({
-    super.key,
-    required this.isAccepted,
-    required this.onChanged,
-  });
+  final bool isAddPaymentMethodCall;
+  const AcceptTermsWidget(
+      {super.key,
+      required this.isAccepted,
+      required this.onChanged,
+      this.isAddPaymentMethodCall = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,10 @@ class AcceptTermsWidget extends StatelessWidget {
           onChanged: onChanged,
         ),
         const SizedBox(width: 16),
-        const Expanded(child: AcceptTermsTextWidget()),
+        Expanded(
+            child: AcceptTermsTextWidget(
+          isAddPaymentMethodCall: isAddPaymentMethodCall,
+        )),
       ],
     );
   }
