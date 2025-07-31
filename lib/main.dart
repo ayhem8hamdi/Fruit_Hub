@@ -1,4 +1,4 @@
-import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/core/services/custom_bloc_observer_service.dart';
 import 'package:advanced_ecommerce/core/services/easy_loading_service.dart';
 import 'package:advanced_ecommerce/core/services/get_it_service.dart';

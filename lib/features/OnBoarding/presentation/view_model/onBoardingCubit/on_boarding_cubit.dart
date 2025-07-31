@@ -1,4 +1,4 @@
-import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/core/services/shared_prefs.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/view_model/onBoardingCubit/ob_boarding_states.dart';
 import 'package:flutter/material.dart';

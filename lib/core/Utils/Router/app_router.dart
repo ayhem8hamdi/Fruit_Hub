@@ -32,7 +32,7 @@ abstract class AppRouter {
   static String createNewPasswordScreen =
       "/loginScreen/passwordForgot/recoverPasswordScreen/createNewPasswordScreen";
 
-  // 🔥 New nested navigation wrapper
+  // New nested navigation wrapper
   static String mainTabs = "/mainTabs";
 
   static List<GetPage<dynamic>>? getViews() {
@@ -76,7 +76,7 @@ abstract class AppRouter {
       GetPage(name: productsScreen, page: () => const ProductsScreen()),
       GetPage(name: cardScreen, page: () => const CardScreen()),
 
-      // ✅ NEW: Wrapper that holds the nested navigator
+      // NEW: Wrapper that holds the nested navigator
       GetPage(
           name: mainTabs,
           page: () => const BaseScreenWithNav(

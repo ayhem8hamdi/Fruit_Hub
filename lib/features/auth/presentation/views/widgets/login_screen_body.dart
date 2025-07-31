@@ -1,4 +1,4 @@
-import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/connect_option.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/create_account_row.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_auth_appbar.dart';

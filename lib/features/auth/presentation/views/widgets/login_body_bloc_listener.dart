@@ -1,4 +1,4 @@
-import 'package:advanced_ecommerce/core/Utils/app_router.dart';
+import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/core/Utils/ui_errors_handler.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/manager/social_media_auth_cubit/cubit/social_media_auth_cubit.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/login_screen_body.dart';
