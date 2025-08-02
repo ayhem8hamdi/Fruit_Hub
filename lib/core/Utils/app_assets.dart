@@ -80,4 +80,7 @@ abstract class Assets {
 
   static const String paymentOneIcon = 'assets/images/payment1.svg';
   static const String paymentTwoIcon = 'assets/images/payment2.svg';
+
+  static const String commandeIcon = 'assets/images/commande_icon.svg';
+  static const String arrowDownIcon = 'assets/images/arrow-down.svg';
 }

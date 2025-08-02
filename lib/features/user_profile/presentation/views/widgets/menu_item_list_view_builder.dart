@@ -21,7 +21,7 @@ class MenuItemListViewBuilder extends StatelessWidget {
         image: Assets.boxIcon,
         title: 'طلباتي',
         onTap: () {
-          debugPrint('Navigate to orders');
+          Navigator.of(context).pushNamed(BaseTabRoutes.onGoingOrders);
         },
       ),
       UserProfileParameterMenu(
