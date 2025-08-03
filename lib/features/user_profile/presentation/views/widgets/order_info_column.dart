@@ -33,7 +33,7 @@ class OrderInfosColumn extends StatelessWidget {
             Text(' : 10',
                 style: AppStyles.styleBold13(context)
                     .copyWith(color: const Color(0XFF0C0D0D))),
-            const Gap(23),
+            const Gap(26),
             Text('250 جنية',
                 style: AppStyles.styleBold13(context)
                     .copyWith(color: const Color(0XFF0C0D0D))),
