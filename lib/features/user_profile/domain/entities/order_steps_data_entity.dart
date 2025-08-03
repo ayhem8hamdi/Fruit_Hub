@@ -1,11 +1,11 @@
 class OrderStepDataEntity {
-  final String title;
-  final String subtitle;
+  final String label;
+  final String value;
   final bool isCompleted;
 
   OrderStepDataEntity({
-    required this.title,
-    required this.subtitle,
+    required this.label,
+    required this.value,
     required this.isCompleted,
   });
 }

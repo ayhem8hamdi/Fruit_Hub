@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/order_details_content.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 
@@ -53,10 +54,7 @@ class OrderDetails extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 8, bottom: 8, right: 9),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [],
-            ),
+            child: OrderDetailsContent(),
           ),
         ],
       ),
