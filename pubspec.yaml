@@ -56,6 +56,7 @@ dependencies:
   salomon_bottom_bar: ^3.3.2
   flutter_switch: ^0.3.2
   measured: ^0.1.0
+  timelines: ^0.1.0
 
 dev_dependencies:
   flutter_test:

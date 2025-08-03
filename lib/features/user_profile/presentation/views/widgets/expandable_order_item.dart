@@ -1,3 +1,6 @@
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/order_item.dart';
+import 'package:flutter/material.dart';
+
 class ExpandableOrderItem extends StatefulWidget {
   const ExpandableOrderItem({super.key});
 
@@ -41,28 +44,18 @@ class OrderDetails extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       color: const Color(0XFFF2F3F3).withOpacity(0.4),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Divider(
+          Divider(
             thickness: 0.6,
             color: Color(0xFFDDDFDF),
           ),
-          const Gap(8),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.only(top: 8, bottom: 8, right: 9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('تفاصيل إضافية عن الطلب',
-                    style: AppStyles.styleRegular13(context)),
-                const Gap(8),
-                Text('حالة الطلب: جاري التوصيل',
-                    style: AppStyles.styleRegular13(context)),
-                const Gap(8),
-                Text('رقم التتبع: XYZ123456',
-                    style: AppStyles.styleRegular13(context)),
-              ],
+              children: [],
             ),
           ),
         ],
