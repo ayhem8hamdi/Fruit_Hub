@@ -3,8 +3,8 @@ import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit
 import 'package:flutter/material.dart';
 
 class FruitGridItem extends StatelessWidget {
-  const FruitGridItem({super.key});
-
+  const FruitGridItem({super.key, this.color});
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,9 +17,18 @@ class FruitGridItem extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 10, right: 9, bottom: 5),
-                child: Icon(Icons.favorite_border, size: 23),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, right: 9, bottom: 5),
+                child: color != null
+                    ? Icon(
+                        Icons.favorite,
+                        size: 23,
+                        color: color,
+                      )
+                    : const Icon(
+                        Icons.favorite_border,
+                        size: 23,
+                      ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),

@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit_item_grid_delegate_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -14,6 +15,10 @@ class FavouriteItemsScreenBody extends StatelessWidget {
             title: 'المفضلة',
           ),
           SliverGap(16),
+          FruitItemGridDelegateBuilder(
+            childCount: 4,
+            color: Colors.red,
+          )
         ],
       ),
     );
