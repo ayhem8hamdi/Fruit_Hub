@@ -35,7 +35,7 @@ class MenuItemListViewBuilder extends StatelessWidget {
         image: Assets.favouritesIcon,
         title: 'المفضلة',
         onTap: () {
-          debugPrint('Navigate to favorites');
+          Navigator.of(context).pushNamed(BaseTabRoutes.favouriteItemsScreen);
         },
       ),
     ];

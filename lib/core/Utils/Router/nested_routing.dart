@@ -5,6 +5,7 @@ import 'package:advanced_ecommerce/features/home/presentation/view/widgets/produ
 import 'package:advanced_ecommerce/features/notifications/presentation/views/widgets/notif_screen_body.dart';
 import 'package:advanced_ecommerce/features/search/presentaion/views/widgets/search_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/add_payment_method_screen_body.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/favourite_items_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/on_going_orders_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/payment_methods_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/personal_data_screen_body.dart';
@@ -32,6 +33,9 @@ class BaseTabRoutes {
   static const String addPaymentMethod =
       '/tab/profile/paymentMethods/addPaymentMethod';
   static const String onGoingOrders = '/tab/profile/onGoingOrders';
+
+  static const String favouriteItemsScreen =
+      '/tab/profile/favouriteItemsScreen';
 }
 
 class BaseTabNavigator extends StatelessWidget {
@@ -96,6 +100,10 @@ class BaseTabNavigator extends StatelessWidget {
             break;
           case BaseTabRoutes.onGoingOrders:
             builder = (_) => const Scaffold(body: OnGoingOrdersScreenBody());
+            break;
+
+          case BaseTabRoutes.favouriteItemsScreen:
+            builder = (_) => const Scaffold(body: FavouriteItemsScreenBody());
             break;
 
           default:
