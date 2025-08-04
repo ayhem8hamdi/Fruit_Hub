@@ -10,6 +10,7 @@ import 'package:advanced_ecommerce/features/user_profile/presentation/views/widg
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/payment_methods_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/personal_data_screen_body.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/user_profile_screen_body.dart';
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/who_are_we_screen_body.dart';
 import 'package:flutter/material.dart';
 
 class BaseTabRoutes {
@@ -33,9 +34,9 @@ class BaseTabRoutes {
   static const String addPaymentMethod =
       '/tab/profile/paymentMethods/addPaymentMethod';
   static const String onGoingOrders = '/tab/profile/onGoingOrders';
-
   static const String favouriteItemsScreen =
       '/tab/profile/favouriteItemsScreen';
+  static const String whoAreWeScreen = '/tab/profile/whoAreWeScreen';
 }
 
 class BaseTabNavigator extends StatelessWidget {
@@ -104,6 +105,9 @@ class BaseTabNavigator extends StatelessWidget {
 
           case BaseTabRoutes.favouriteItemsScreen:
             builder = (_) => const Scaffold(body: FavouriteItemsScreenBody());
+            break;
+          case BaseTabRoutes.whoAreWeScreen:
+            builder = (_) => const Scaffold(body: WhoAreWeScreenBody());
             break;
 
           default:
