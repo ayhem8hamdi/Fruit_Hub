@@ -12,15 +12,22 @@ class VerticalTimeline extends StatelessWidget {
     return Column(
       children: List.generate(
         steps.length,
-        (index) => TimelineStepItem(
-          step: steps[index],
-          isFirst: index == 0,
-          isLast: index == steps.length - 1,
-          showConnector: index != steps.length - 1,
-          connectorColor: steps[index].isCompleted
+        (index) {
+          final isLast = index == steps.length - 1;
+          final isCompleted = steps[index].isCompleted;
+          final nextCompleted = !isLast && steps[index + 1].isCompleted;
+          final connectorColor = isCompleted && nextCompleted
               ? const Color(0XFF28B446)
-              : const Color(0XFFF4F5F9),
-        ),
+              : Colors.grey.shade400;
+
+          return TimelineStepItem(
+            step: steps[index],
+            isFirst: index == 0,
+            isLast: isLast,
+            showConnector: !isLast,
+            connectorColor: connectorColor,
+          );
+        },
       ),
     );
   }

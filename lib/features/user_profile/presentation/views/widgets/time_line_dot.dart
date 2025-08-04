@@ -13,7 +13,7 @@ class TimelineDot extends StatelessWidget {
       height: 10,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isCompleted ? AppColors.kPrimaryColor : const Color(0XFFEBEBEB),
+        color: isCompleted ? AppColors.kPrimaryColor : Colors.grey.shade500,
       ),
     );
   }

@@ -25,7 +25,7 @@ class TimelineStepItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Transform.translate(
-          offset: const Offset(0, 9.8),
+          offset: const Offset(0, 9.45),
           child: Column(
             children: [
               TimelineDot(isCompleted: step.isCompleted),

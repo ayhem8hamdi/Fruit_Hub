@@ -1,5 +1,6 @@
-import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/order_details_content.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/order_item.dart';
+
+import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/order_details_content.dart';
 import 'package:flutter/material.dart';
 
 class ExpandableOrderItem extends StatefulWidget {
