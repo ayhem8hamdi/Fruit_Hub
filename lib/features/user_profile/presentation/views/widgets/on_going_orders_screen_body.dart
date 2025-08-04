@@ -15,8 +15,26 @@ class OnGoingOrdersScreenBody extends StatelessWidget {
             title: 'طلباتي',
           ),
           SliverGap(16),
-          ExpandableOrderItem()
+          ExpandableOrderItemsList()
         ],
+      ),
+    );
+  }
+}
+
+class ExpandableOrderItemsList extends StatelessWidget {
+  const ExpandableOrderItemsList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Column(
+        children: List.generate(
+            3,
+            (index) => const Padding(
+                  padding: EdgeInsets.only(bottom: 8.0),
+                  child: ExpandableOrderItem(),
+                )),
       ),
     );
   }

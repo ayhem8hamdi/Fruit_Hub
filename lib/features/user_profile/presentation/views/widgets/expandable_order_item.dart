@@ -17,23 +17,21 @@ class _ExpandableOrderItemState extends State<ExpandableOrderItem> {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          OrderItem(
-            isExpanded: _isExpanded,
-            onArrowTap: _toggle,
-          ),
-          AnimatedCrossFade(
-            firstChild: const SizedBox.shrink(),
-            secondChild: const OrderDetails(),
-            crossFadeState: _isExpanded
-                ? CrossFadeState.showSecond
-                : CrossFadeState.showFirst,
-            duration: const Duration(milliseconds: 300),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        OrderItem(
+          isExpanded: _isExpanded,
+          onArrowTap: _toggle,
+        ),
+        AnimatedCrossFade(
+          firstChild: const SizedBox.shrink(),
+          secondChild: const OrderDetails(),
+          crossFadeState: _isExpanded
+              ? CrossFadeState.showSecond
+              : CrossFadeState.showFirst,
+          duration: const Duration(milliseconds: 300),
+        ),
+      ],
     );
   }
 }
