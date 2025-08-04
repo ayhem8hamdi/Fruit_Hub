@@ -21,41 +21,62 @@ class LogoutPopUpBody extends StatelessWidget {
                 style: AppStyles.styleBold16(context)
                     .copyWith(color: const Color(0XFF0C0D0D))),
             const SizedBox(height: 32),
-            Row(
-              children: [
-                Expanded(
-                  child: PopUpLogoutButton(
-                    text: 'تأكيد',
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      //here we trigger logout from cubit
-                    },
-                  ),
-                ),
-                const Gap(8),
-                Expanded(
-                  child: PopUpLogoutButton(
-                    text: 'لا ارغب',
-                    color: Colors.white,
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
-              ],
-            ),
+            const LogoutPopUpButtonsRow(),
           ],
         ),
-        // Exit icon
-        Positioned(
-          top: 0,
-          right: 0,
-          child: InkWell(
-            onTap: () => Navigator.of(context).pop(), // Close dialog
-            child: const Icon(
-              Icons.close,
-              color: Color(0XFF0C0D0D),
-            ),
+        const LogoutPopUpExitIcon(),
+      ],
+    );
+  }
+}
+
+class LogoutPopUpExitIcon extends StatelessWidget {
+  const LogoutPopUpExitIcon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 0,
+      right: 0,
+      child: InkWell(
+        onTap: () => Navigator.of(context).pop(), // Close dialog
+        child: const Icon(
+          Icons.close,
+          color: Color(0XFF0C0D0D),
+        ),
+      ),
+    );
+  }
+}
+
+class LogoutPopUpButtonsRow extends StatelessWidget {
+  const LogoutPopUpButtonsRow({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: PopUpLogoutButton(
+            text: 'تأكيد',
+            onTap: () {
+              Navigator.of(context).pop();
+              //here we trigger logout from cubit
+            },
+          ),
+        ),
+        const Gap(8),
+        Expanded(
+          child: PopUpLogoutButton(
+            text: 'لا ارغب',
+            color: Colors.white,
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
         ),
       ],

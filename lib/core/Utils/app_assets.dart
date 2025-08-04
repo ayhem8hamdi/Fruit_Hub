@@ -83,4 +83,11 @@ abstract class Assets {
 
   static const String commandeIcon = 'assets/images/commande_icon.svg';
   static const String arrowDownIcon = 'assets/images/arrow-down.svg';
+  static const String checkedCheckOutIcon =
+      'assets/images/checked_checkout_step.svg';
+  static const String checkoutSecondStep =
+      'assets/images/checkout_second_step.svg';
+  static const String checkoutThirdStep =
+      'assets/images/checkout_third_step.svg';
+  static const String checkoutLastStep = 'assets/images/checkout_last_step.svg';
 }
