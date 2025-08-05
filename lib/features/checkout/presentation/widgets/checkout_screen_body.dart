@@ -1,7 +1,7 @@
-import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
-import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/custom_card_appbar.dart';
+import 'package:advanced_ecommerce/features/checkout/presentation/widgets/active_payment_time_choice.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/widgets/check_out_step_row.dart';
+import 'package:advanced_ecommerce/features/checkout/presentation/widgets/inactive_payment_time_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -20,87 +20,69 @@ class CheckoutScreenBody extends StatelessWidget {
           stepNumber: 0,
         ),
         SliverGap(32),
-        ActivePaymentTimeChoice()
+        PaymentMethodSelector()
       ],
     );
   }
 }
 
-class ActivePaymentTimeChoice extends StatelessWidget {
-  const ActivePaymentTimeChoice({super.key});
+class PaymentMethodSelector extends StatefulWidget {
+  const PaymentMethodSelector({super.key});
 
+  @override
+  State<PaymentMethodSelector> createState() => _PaymentMethodSelectorState();
+}
+
+class _PaymentMethodSelectorState extends State<PaymentMethodSelector> {
+  int selectedIndex = 0;
+
+  void onSelect(int index) {
+    if (selectedIndex != index) {
+      setState(() {
+        selectedIndex = index;
+      });
+    }
+  }
+
+  static final List<PaymentItemModel> list = [
+    PaymentItemModel(
+        title: 'الدفع عند الاستلام',
+        subTitle: 'التسليم من المكان',
+        price: '40 جنيه'),
+    PaymentItemModel(
+        title: 'اشتري الان وادفع لاحقا',
+        subTitle: 'يرجي تحديد طريقه الدفع',
+        price: 'مجاني')
+  ];
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: IntrinsicHeight(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding:
-              const EdgeInsets.only(top: 19, bottom: 19, left: 13, right: 2),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: const Color(0XFFF2F3F3).withOpacity(0.4),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomActiveRadioCircle(),
-              const Gap(12),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'الدفع عند الاستلام',
-                    style: AppStyles.styleSemiBold13(context)
-                        .copyWith(color: const Color(0XFF000000)),
-                  ),
-                  const Gap(8),
-                  Text(
-                    'التسليم من المكان',
-                    style: AppStyles.styleRegular13(context)
-                        .copyWith(color: Colors.grey),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  '40 جنيه',
-                  style: AppStyles.styleBold13(context)
-                      .copyWith(color: const Color(0XFF3A8B33)),
-                ),
-              ),
-            ],
-          ),
-        ),
+      child: Column(
+        children: List.generate(2, (index) {
+          final isSelected = index == selectedIndex;
+
+          return GestureDetector(
+            onTap: () => onSelect(index),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: index == 0 ? 12 : 0),
+              child: isSelected
+                  ? ActivePaymentTimeChoice(paymentItemModel: list[index])
+                  : InActivePaymentTimeChoice(
+                      paymentItemModel: list[index],
+                    ),
+            ),
+          );
+        }),
       ),
     );
   }
 }
 
-class CustomActiveRadioCircle extends StatelessWidget {
-  const CustomActiveRadioCircle({super.key});
+class PaymentItemModel {
+  final String title;
+  final String subTitle;
+  final String price;
 
-  @override
-  Widget build(BuildContext context) {
-    return ClipOval(
-      child: Container(
-        width: 20,
-        height: 20,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(9999), color: Colors.white),
-        child: Center(
-          child: Container(
-            width: 11,
-            height: 11,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(9999),
-                color: AppColors.kPrimaryColor),
-          ),
-        ),
-      ),
-    );
-  }
+  PaymentItemModel(
+      {required this.title, required this.subTitle, required this.price});
 }
