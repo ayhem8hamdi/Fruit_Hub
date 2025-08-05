@@ -20,14 +20,14 @@ class CheckoutScreenBody extends StatelessWidget {
           stepNumber: 0,
         ),
         SliverGap(32),
-        InActivePaymentTimeChoice()
+        ActivePaymentTimeChoice()
       ],
     );
   }
 }
 
-class InActivePaymentTimeChoice extends StatelessWidget {
-  const InActivePaymentTimeChoice({super.key});
+class ActivePaymentTimeChoice extends StatelessWidget {
+  const ActivePaymentTimeChoice({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class InActivePaymentTimeChoice extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomInActiveRadioCircle(),
+              const CustomActiveRadioCircle(),
               const Gap(12),
               Column(
                 mainAxisSize: MainAxisSize.min,
@@ -80,8 +80,8 @@ class InActivePaymentTimeChoice extends StatelessWidget {
   }
 }
 
-class CustomInActiveRadioCircle extends StatelessWidget {
-  const CustomInActiveRadioCircle({super.key});
+class CustomActiveRadioCircle extends StatelessWidget {
+  const CustomActiveRadioCircle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -90,11 +90,16 @@ class CustomInActiveRadioCircle extends StatelessWidget {
         width: 20,
         height: 20,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(9999),
-            border: Border.all(
-              width: 1,
-              color: const Color(0XFF949D9E),
-            )),
+            borderRadius: BorderRadius.circular(9999), color: Colors.white),
+        child: Center(
+          child: Container(
+            width: 11,
+            height: 11,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(9999),
+                color: AppColors.kPrimaryColor),
+          ),
+        ),
       ),
     );
   }
