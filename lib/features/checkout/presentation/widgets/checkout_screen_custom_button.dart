@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 class CheckoutScreenCustomButton extends StatelessWidget {
   const CheckoutScreenCustomButton({
     super.key,
+    this.onTap,
   });
-
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
+    return SliverToBoxAdapter(
         child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: PopUpLogoutButton(
+        onTap: onTap,
         text: "التالي",
       ),
     ));
