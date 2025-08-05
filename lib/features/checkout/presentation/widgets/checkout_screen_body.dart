@@ -24,8 +24,13 @@ class CheckoutScreenBody extends StatelessWidget {
         const SliverGap(32),
         const PaymentMethodSelector(),
         const SliverGap(100),
-        CheckoutScreenCustomButton(
-          onTap: () => Get.toNamed(AppRouter.checkoutUserInfoScreen),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: CheckoutScreenCustomButton(
+              onTap: () => Get.toNamed(AppRouter.checkoutUserInfoScreen),
+            ),
+          ),
         )
       ],
     );

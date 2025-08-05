@@ -9,13 +9,9 @@ class CheckoutScreenCustomButton extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-        child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: PopUpLogoutButton(
-        onTap: onTap,
-        text: "التالي",
-      ),
-    ));
+    return PopUpLogoutButton(
+      onTap: onTap,
+      text: "التالي",
+    );
   }
 }
