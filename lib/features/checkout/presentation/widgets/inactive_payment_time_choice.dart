@@ -1,5 +1,5 @@
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
-import 'package:advanced_ecommerce/features/checkout/presentation/widgets/checkout_screen_body.dart';
+import 'package:advanced_ecommerce/features/checkout/domain/entities/payment_method_entity.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/widgets/custom_inactive_radio_circle.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -9,7 +9,7 @@ class InActivePaymentTimeChoice extends StatelessWidget {
     super.key,
     required this.paymentItemModel,
   });
-  final PaymentItemModel paymentItemModel;
+  final PaymentMethodEntity paymentItemModel;
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(

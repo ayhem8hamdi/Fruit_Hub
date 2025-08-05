@@ -22,7 +22,7 @@ class PopUpLogoutButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: AppColors.kPrimaryColor)),
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 9),
+        padding: EdgeInsets.symmetric(vertical: text == "التالي" ? 13 : 9),
         child: Text(
           text ?? '',
           style: AppStyles.styleBold16(context).copyWith(
