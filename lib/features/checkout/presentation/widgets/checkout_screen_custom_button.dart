@@ -5,13 +5,15 @@ class CheckoutScreenCustomButton extends StatelessWidget {
   const CheckoutScreenCustomButton({
     super.key,
     this.onTap,
+    this.text = "التالي",
   });
   final void Function()? onTap;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return PopUpLogoutButton(
       onTap: onTap,
-      text: "التالي",
+      text: text,
     );
   }
 }

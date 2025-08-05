@@ -12,7 +12,7 @@ class CustomNumberTextField extends StatelessWidget {
   });
 
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
 
   @override

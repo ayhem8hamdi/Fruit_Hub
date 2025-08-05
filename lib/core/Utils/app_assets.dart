@@ -90,4 +90,11 @@ abstract class Assets {
   static const String checkoutThirdStep =
       'assets/images/checkout_third_step.svg';
   static const String checkoutLastStep = 'assets/images/checkout_last_step.svg';
+  static const String visaIcon = 'assets/images/visa_icon.svg';
+  static const String redOrangePaymentIcon =
+      'assets/images/red_orange_payment_icon.svg';
+
+  static const String paypalIcon = 'assets/images/paypal_icon.svg';
+
+  static const String appelPaymentIcon = 'assets/images/apple_pay_icon.svg';
 }

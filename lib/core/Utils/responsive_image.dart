@@ -66,7 +66,7 @@ class ResponsiveImage extends StatelessWidget {
             ? Image(image: imageProvider!, fit: fit)
             : FittedBox(
                 fit: fit,
-                clipBehavior: Clip.hardEdge,
+                clipBehavior: Clip.none,
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(),
                   child: customImageWidget ?? const SizedBox.shrink(),
