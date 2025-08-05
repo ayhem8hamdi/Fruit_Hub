@@ -7,6 +7,7 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/password_for
 import 'package:advanced_ecommerce/features/auth/presentation/views/recover_password_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/card_screen.dart';
+import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_pay_screen.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_screen.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_user_info_screen.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/home_screen.dart';
@@ -36,6 +37,8 @@ abstract class AppRouter {
   static String checkoutScreen = "/mainTabs/checkoutScreen";
   static String checkoutUserInfoScreen =
       "/mainTabs/checkoutScreen/checkoutUserInfoScreen";
+  static String checkoutPayScreen =
+      "/mainTabs/checkoutScreen/checkoutPayScreen";
   // New nested navigation wrapper
   static String mainTabs = "/mainTabs";
 
@@ -93,6 +96,10 @@ abstract class AppRouter {
       GetPage(
         name: checkoutUserInfoScreen,
         page: () => const CheckoutUserInfoScreen(),
+      ),
+      GetPage(
+        name: checkoutPayScreen,
+        page: () => const CheckoutPayScreen(),
       ),
     ];
   }

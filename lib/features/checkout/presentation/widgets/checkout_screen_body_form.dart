@@ -1,39 +1,43 @@
+import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/widgets/checkout_screen_custom_button.dart';
 import 'package:advanced_ecommerce/features/user_profile/presentation/views/widgets/switch_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class CheckoutScreenBodyForm extends StatelessWidget {
   const CheckoutScreenBodyForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomBorderTextField(
+            const CustomBorderTextField(
               hintText: 'الاسم كامل',
             ),
-            Gap(10),
-            CustomBorderTextField(hintText: 'البريد الإلكتروني'),
-            Gap(10),
-            CustomBorderTextField(hintText: 'العنوان'),
-            Gap(10),
-            CustomBorderTextField(hintText: 'المدينه'),
-            Gap(10),
-            CustomBorderTextField(hintText: 'رقم الطابق , رقم الشقه ..'),
-            Gap(18),
-            Padding(
+            const Gap(10),
+            const CustomBorderTextField(hintText: 'البريد الإلكتروني'),
+            const Gap(10),
+            const CustomBorderTextField(hintText: 'العنوان'),
+            const Gap(10),
+            const CustomBorderTextField(hintText: 'المدينه'),
+            const Gap(10),
+            const CustomBorderTextField(hintText: 'رقم الطابق , رقم الشقه ..'),
+            const Gap(18),
+            const Padding(
               padding: EdgeInsets.only(right: 4),
               child: SaveAdressToggleButtonRow(),
             ),
-            Gap(64),
-            CheckoutScreenCustomButton()
+            const Gap(64),
+            CheckoutScreenCustomButton(
+              onTap: () => Get.toNamed(AppRouter.checkoutPayScreen),
+            )
           ],
         ),
       ),
