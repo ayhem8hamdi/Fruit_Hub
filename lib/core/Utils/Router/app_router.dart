@@ -39,6 +39,8 @@ abstract class AppRouter {
       "/mainTabs/checkoutScreen/checkoutUserInfoScreen";
   static String checkoutPayScreen =
       "/mainTabs/checkoutScreen/checkoutPayScreen";
+  static String checkoutLastPaymentScreen =
+      "/mainTabs/checkoutScreen/checkoutPayScreen/checkoutLastPaymentScreen";
   // New nested navigation wrapper
   static String mainTabs = "/mainTabs";
 
@@ -100,6 +102,10 @@ abstract class AppRouter {
       GetPage(
         name: checkoutPayScreen,
         page: () => const CheckoutPayScreen(),
+      ),
+      GetPage(
+        name: checkoutLastPaymentScreen,
+        page: () => const CheckoutLastPaymentScreenBody(),
       ),
     ];
   }
