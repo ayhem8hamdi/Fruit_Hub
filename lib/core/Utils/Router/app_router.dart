@@ -7,6 +7,7 @@ import 'package:advanced_ecommerce/features/auth/presentation/views/password_for
 import 'package:advanced_ecommerce/features/auth/presentation/views/recover_password_screen.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/card_screen.dart';
+import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_last_payment_screen.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_pay_screen.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_screen.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/views/checkout_user_info_screen.dart';
@@ -98,14 +99,17 @@ abstract class AppRouter {
       GetPage(
         name: checkoutUserInfoScreen,
         page: () => const CheckoutUserInfoScreen(),
+        transition: Transition.rightToLeft,
       ),
       GetPage(
         name: checkoutPayScreen,
         page: () => const CheckoutPayScreen(),
+        transition: Transition.rightToLeft,
       ),
       GetPage(
         name: checkoutLastPaymentScreen,
-        page: () => const CheckoutLastPaymentScreenBody(),
+        page: () => const CheckoutLastPaymentScreen(),
+        transition: Transition.rightToLeft,
       ),
     ];
   }

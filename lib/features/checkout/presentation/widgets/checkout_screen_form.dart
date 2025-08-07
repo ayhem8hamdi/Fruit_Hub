@@ -1,9 +1,11 @@
+import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/core/Utils/app_colors.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/accept_terms_text_widget.dart';
 import 'package:advanced_ecommerce/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:advanced_ecommerce/features/checkout/presentation/widgets/checkout_screen_custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class CheckoutScreenForm extends StatelessWidget {
   const CheckoutScreenForm({super.key});
@@ -35,7 +37,7 @@ class CheckoutScreenForm extends StatelessWidget {
               const Gap(50),
               CheckoutScreenCustomButton(
                 text: 'تأكيد & استمرار',
-                onTap: () {},
+                onTap: () => Get.toNamed(AppRouter.checkoutLastPaymentScreen),
               ),
             ],
           ),
