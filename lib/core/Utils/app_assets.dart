@@ -97,4 +97,5 @@ abstract class Assets {
   static const String paypalIcon = 'assets/images/paypal_icon.svg';
 
   static const String appelPaymentIcon = 'assets/images/apple_pay_icon.svg';
+  static const String visaBadgeIcon = 'assets/images/visa_badge.png';
 }
