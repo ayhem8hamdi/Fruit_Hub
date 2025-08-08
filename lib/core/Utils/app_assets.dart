@@ -99,4 +99,10 @@ abstract class Assets {
   static const String appelPaymentIcon = 'assets/images/apple_pay_icon.svg';
   static const String visaBadgeIcon = 'assets/images/visa_badge.png';
   static const String locationIcon = 'assets/images/location.svg';
+
+  static const String calendarIcon = 'assets/images/calendar_icon.svg';
+  static const String calorieIcon = 'assets/images/calorie_icon.svg';
+  static const String organicIcon = 'assets/images/oganic_icon.svg';
+  static const String starIcon = 'assets/images/star_icon.svg';
+  static const String watermelonIcon = 'assets/images/watermelon.svg';
 }
