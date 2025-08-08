@@ -88,6 +88,7 @@ abstract class AppRouter {
 
       // NEW: Wrapper that holds the nested navigator
       GetPage(
+          transition: Transition.leftToRight,
           name: mainTabs,
           page: () => const BaseScreenWithNav(
                 initialIndex: 0,
