@@ -12,7 +12,6 @@ class ProductClippedBackground extends StatelessWidget {
       clipper: BottomSemiCircleClipper(),
       child: Container(
         color: const Color(0XFFF3F5F7),
-        height: MediaQuery.sizeOf(context).height * 0.48,
         width: double.infinity,
       ),
     );
