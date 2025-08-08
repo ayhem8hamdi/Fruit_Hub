@@ -105,4 +105,7 @@ abstract class Assets {
   static const String organicIcon = 'assets/images/oganic_icon.svg';
   static const String starIcon = 'assets/images/star_icon.svg';
   static const String watermelonIcon = 'assets/images/watermelon.svg';
+
+  static const String curvedProductItem =
+      'assets/images/curved_product_item_background.svg';
 }
