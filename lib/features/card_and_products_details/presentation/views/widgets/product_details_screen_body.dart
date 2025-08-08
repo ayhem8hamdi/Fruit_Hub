@@ -1,37 +1,18 @@
-import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
-import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_clipped_background.dart';
-import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_details_screen_custom_app_bar.dart';
+import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_image_and_upper_section.dart';
+import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_quantity_and_pricing_row.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class ProductDetailsScreenBody extends StatelessWidget {
   const ProductDetailsScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return const CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.48,
-            child: Stack(
-              children: [
-                const ProductClippedBackground(),
-                Center(
-                  child: Image.asset(
-                    Assets.fraisePng,
-                    fit: BoxFit.contain,
-                    width: MediaQuery.sizeOf(context).width * 0.50,
-                  ),
-                ),
-                const Positioned(
-                  top: 0,
-                  right: 0,
-                  child: ProductDetailsCustomAppBar(),
-                ),
-              ],
-            ),
-          ),
-        )
+        ProductImageAndUpperSection(),
+        SliverGap(24),
+        ProductQuantityAndPriceRow()
       ],
     );
   }
