@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_reusable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OurProductsTitleAndSortingIconLine extends StatelessWidget {
@@ -20,7 +24,17 @@ class OurProductsTitleAndSortingIconLine extends StatelessWidget {
               style:
                   AppStyles.styleBold16(context).copyWith(color: Colors.black),
             ),
-            SvgPicture.asset(image)
+            GestureDetector(
+                child: SvgPicture.asset(image),
+                onTap: () {
+                  log('tapped');
+                  showCupertinoModalBottomSheet(
+                    context: context,
+                    barrierColor: Colors.black.withOpacity(0.3),
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => const PurchaseBottomSheet(),
+                  );
+                })
           ],
         ),
       ),
