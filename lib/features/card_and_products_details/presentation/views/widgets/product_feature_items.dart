@@ -5,8 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class ProductFeatureItem extends StatelessWidget {
-  const ProductFeatureItem({super.key, required this.productFeatureModel});
+  const ProductFeatureItem(
+      {super.key, required this.productFeatureModel, this.index});
   final ProductFeatureModel productFeatureModel;
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,28 @@ class ProductFeatureItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                productFeatureModel.value,
-                style: AppStyles.styleBold16(context)
-                    .copyWith(color: const Color(0XFF23AA49)),
-              ),
+              index == 3
+                  ? Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '(124) ',
+                            style: AppStyles.styleBold13(context)
+                                .copyWith(color: const Color(0XFF979899)),
+                          ),
+                          TextSpan(
+                            text: '4.8',
+                            style: AppStyles.styleBold16(context)
+                                .copyWith(color: const Color(0XFF23AA49)),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Text(
+                      productFeatureModel.value,
+                      style: AppStyles.styleBold16(context)
+                          .copyWith(color: const Color(0XFF23AA49)),
+                    ),
               const Gap(8),
               Text(
                 productFeatureModel.title,
