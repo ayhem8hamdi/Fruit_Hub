@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_description_text.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_features.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_image_and_upper_section.dart';
@@ -21,7 +22,16 @@ class ProductDetailsScreenBody extends StatelessWidget {
         SliverGap(9),
         ProductDescriptionText(),
         SliverGap(17),
-        ProductFeatures()
+        ProductFeatures(),
+        SliverGap(20),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.only(left: 18, right: 18, bottom: 30),
+            child: OnBoardingButton(
+              text: 'أضف الي السلة',
+            ),
+          ),
+        ),
       ],
     );
   }
