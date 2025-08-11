@@ -8,7 +8,8 @@ abstract class UiHandler {
   static const Color primaryColor = Color(0xFF1B5E37);
 
   static Future<void> showFlushBar(BuildContext context, String message,
-      {bool isError = true}) async {
+      {bool isError = true,
+      FlushbarPosition flushbarPosition = FlushbarPosition.BOTTOM}) async {
     try {
       await Flushbar(
         message: message,
@@ -16,7 +17,7 @@ abstract class UiHandler {
         borderRadius: BorderRadius.circular(16),
         backgroundColor: primaryColor,
         duration: const Duration(seconds: 3),
-        flushbarPosition: FlushbarPosition.BOTTOM,
+        flushbarPosition: flushbarPosition,
         animationDuration: const Duration(milliseconds: 400),
         messageColor: Colors.white,
         icon: Icon(

@@ -8,6 +8,7 @@ class OnBoardingButton extends StatelessWidget {
   final String? text;
   final bool isLoading;
   final double padding;
+  final double? raduis;
 
   const OnBoardingButton({
     super.key,
@@ -16,6 +17,7 @@ class OnBoardingButton extends StatelessWidget {
     this.text,
     this.padding = 19,
     this.isLoading = false,
+    this.raduis = 18,
   });
 
   @override
@@ -25,7 +27,7 @@ class OnBoardingButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isActive! ? AppColors.kPrimaryColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(raduis!),
         ),
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: padding),
