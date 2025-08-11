@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/custom_reusable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +25,9 @@ class OurProductsTitleAndSortingIconLine extends StatelessWidget {
             GestureDetector(
                 child: SvgPicture.asset(image),
                 onTap: () {
-                  log('tapped');
                   showCupertinoModalBottomSheet(
                     context: context,
+                    useRootNavigator: true,
                     barrierColor: Colors.black.withOpacity(0.3),
                     backgroundColor: Colors.transparent,
                     builder: (context) => const PurchaseBottomSheet(),
