@@ -28,9 +28,12 @@ class OurProductsTitleAndSortingIconLine extends StatelessWidget {
                   showCupertinoModalBottomSheet(
                     context: context,
                     useRootNavigator: true,
+                    expand: false,
                     barrierColor: Colors.black.withOpacity(0.3),
                     backgroundColor: Colors.transparent,
-                    builder: (context) => const PurchaseBottomSheet(),
+                    builder: (context) => const PurchaseBottomSheet(
+                      title: "ترتيب حسب :",
+                    ),
                   );
                 })
           ],

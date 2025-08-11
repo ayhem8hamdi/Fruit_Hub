@@ -1,25 +1,29 @@
 import 'dart:ui';
+import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class PurchaseBottomSheet extends StatelessWidget {
-  const PurchaseBottomSheet({super.key});
-
+  const PurchaseBottomSheet({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
-          color: Colors.white.withOpacity(0.9),
-          padding: const EdgeInsets.all(16),
-          child: const Column(
+          color: const Color(0XFFFFFFFF),
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, bottom: 32, top: 23),
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PurchaseHeader(),
-              SizedBox(height: 12),
-              PurchaseBody(),
+              PurchaseHeader(
+                title: title,
+              ),
+              const PurchaseBody(),
             ],
           ),
         ),
@@ -29,16 +33,28 @@ class PurchaseBottomSheet extends StatelessWidget {
 }
 
 class PurchaseHeader extends StatelessWidget {
-  const PurchaseHeader({super.key});
-
+  const PurchaseHeader({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      'Purchase Item',
-      style: TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.bold,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Center(
+          child: SizedBox(
+              width: 60,
+              child: Divider(
+                thickness: 3,
+                color: Color(0XFF131F46),
+              )),
+        ),
+        const Gap(15),
+        Text(
+          title,
+          style: AppStyles.styleBold19(context),
+        )
+      ],
     );
   }
 }
@@ -50,19 +66,7 @@ class PurchaseBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Confirm your purchase below:'),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Confirm Purchase'),
-        ),
-        const SizedBox(height: 8),
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
-        ),
-      ],
+      children: [],
     );
   }
 }
