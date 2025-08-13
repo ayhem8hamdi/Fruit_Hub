@@ -108,4 +108,6 @@ abstract class Assets {
 
   static const String curvedProductItem =
       'assets/images/curved_product_item_background.svg';
+    
+   static const String pricingTagIcon = 'assets/images/tag.svg';
 }
