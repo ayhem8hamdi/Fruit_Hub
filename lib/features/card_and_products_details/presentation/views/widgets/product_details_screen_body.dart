@@ -24,13 +24,13 @@ class ProductDetailsScreenBody extends StatelessWidget {
           fruitModel: fruitModel,
         ),
         const SliverGap(9),
-        RatingAndCommentsLinkRow(),
-        SliverGap(9),
-        ProductDescriptionText(),
-        SliverGap(17),
-        ProductFeatures(),
-        SliverGap(20),
-        SliverToBoxAdapter(
+        const RatingAndCommentsLinkRow(),
+        const SliverGap(9),
+        const ProductDescriptionText(),
+        const SliverGap(17),
+        const ProductFeatures(),
+        const SliverGap(20),
+        const SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.only(left: 18, right: 18, bottom: 30),
             child: OnBoardingButton(

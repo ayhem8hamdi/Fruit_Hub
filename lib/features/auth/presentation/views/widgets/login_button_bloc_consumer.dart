@@ -7,8 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 class LoginButtonBlocConsumer extends StatelessWidget {
-  const LoginButtonBlocConsumer({super.key, this.onLoginPressed});
+  const LoginButtonBlocConsumer(
+      {super.key, this.onLoginPressed, this.text = 'إنشاء حساب'});
   final void Function()? onLoginPressed;
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubitCubit, LoginCubitState>(
@@ -16,7 +18,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
         if (state is LoginCubitSucces) {
           UiHandler.showFlushBarThen(
             context,
-            "SignUp Successful",
+            "تم التسجيل بنجاح",
             () {
               Get.toNamed(AppRouter.mainTabs);
 
@@ -40,7 +42,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
           );
         }
         return OnBoardingButton(
-            isActive: true, text: 'إنشاء حساب', onTap: onLoginPressed);
+            isActive: true, text: text, onTap: onLoginPressed);
       },
     );
   }

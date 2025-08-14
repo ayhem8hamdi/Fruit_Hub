@@ -60,6 +60,7 @@ class _LoginTextFieldsFormState extends State<LoginTextFieldsForm> {
           const PasswordForgotNavLink(),
           const Gap(37),
           LoginButtonBlocConsumer(
+            text: 'تسجيل دخول',
             onLoginPressed: _onLoginPressed,
           )
         ],

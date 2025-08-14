@@ -1,5 +1,6 @@
 import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
 import 'package:advanced_ecommerce/features/home/data/models/fruit_model.dart';
+import 'package:advanced_ecommerce/features/home/presentation/view/widgets/favourite_icon.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit_pricing_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,12 +36,11 @@ class FruitGridItem extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 10,
-                right: 9,
-                child: color != null
-                    ? Icon(Icons.favorite, size: 23, color: color)
-                    : const Icon(Icons.favorite_border, size: 23),
-              ),
+                  top: 10,
+                  right: 9,
+                  child: color == null
+                      ? const FavouriteIcon()
+                      : const Icon(Icons.favorite, color: Colors.red)),
               Positioned(
                 bottom: 16,
                 left: 8.5,
