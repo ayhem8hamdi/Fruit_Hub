@@ -1,13 +1,13 @@
 import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
-import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
+import 'package:advanced_ecommerce/features/home/data/models/fruit_model.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/fruit_pricing_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class FruitGridItem extends StatelessWidget {
-  const FruitGridItem({super.key, this.color});
+  const FruitGridItem({super.key, this.color, required this.fruitModel});
   final Color? color;
+  final FruitModel fruitModel;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,13 @@ class FruitGridItem extends StatelessWidget {
                 bottom: 60,
                 left: 17,
                 right: 17,
-                child: FittedBox(
-                  fit: BoxFit.cover,
-                  child: SvgPicture.asset(Assets.ananasIcon),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 17, right: 10, left: 10),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Image.asset(fruitModel.imagelink),
+                  ),
                 ),
               ),
               Positioned(
@@ -37,11 +41,13 @@ class FruitGridItem extends StatelessWidget {
                     ? Icon(Icons.favorite, size: 23, color: color)
                     : const Icon(Icons.favorite_border, size: 23),
               ),
-              const Positioned(
+              Positioned(
                 bottom: 16,
                 left: 8.5,
                 right: 7.5,
-                child: FruitPricingRow(),
+                child: FruitPricingRow(
+                  fruitModel: fruitModel,
+                ),
               ),
             ],
           )),

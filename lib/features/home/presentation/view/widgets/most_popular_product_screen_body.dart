@@ -19,7 +19,8 @@ class MostPopularProductScreenBody extends StatelessWidget {
           SliverGap(24),
           MostPopularProductTitle(),
           SliverGap(14),
-          FruitItemGridDelegateBuilder()
+          FruitItemGridDelegateBuilder(),
+          SliverGap(14)
         ],
       ),
     );

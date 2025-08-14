@@ -16,7 +16,6 @@ class FavouriteItemsScreenBody extends StatelessWidget {
           ),
           SliverGap(16),
           FruitItemGridDelegateBuilder(
-            childCount: 4,
             color: Colors.red,
           )
         ],
