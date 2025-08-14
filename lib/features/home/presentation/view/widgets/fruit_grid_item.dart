@@ -12,7 +12,7 @@ class FruitGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(AppRouter.productDetails),
+      onTap: () => Get.toNamed(AppRouter.productDetails, arguments: fruitModel),
       child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),

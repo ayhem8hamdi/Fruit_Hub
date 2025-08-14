@@ -1,20 +1,27 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/core/Utils/responsive_image.dart';
+import 'package:advanced_ecommerce/features/home/data/models/fruit_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductQuantityAndPriceRow extends StatelessWidget {
-  const ProductQuantityAndPriceRow({super.key});
-
+  const ProductQuantityAndPriceRow({super.key, required this.fruitModel});
+  final FruitModel fruitModel;
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [ProductNameAndPricingWidget(), Spacer(), QuantityWidget()],
+          children: [
+            ProductNameAndPricingWidget(
+              fruitModel: fruitModel,
+            ),
+            const Spacer(),
+            const QuantityWidget()
+          ],
         ),
       ),
     );
@@ -24,8 +31,9 @@ class ProductQuantityAndPriceRow extends StatelessWidget {
 class ProductNameAndPricingWidget extends StatelessWidget {
   const ProductNameAndPricingWidget({
     super.key,
+    required this.fruitModel,
   });
-
+  final FruitModel fruitModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,7 +41,7 @@ class ProductNameAndPricingWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'بطيخ',
+          fruitModel.productName,
           style: AppStyles.styleBold16(context)
               .copyWith(color: const Color(0XFF0C0D0D)),
         ),
@@ -41,7 +49,7 @@ class ProductNameAndPricingWidget extends StatelessWidget {
         Text.rich(
           TextSpan(children: [
             TextSpan(
-                text: "20جنية /",
+                text: "${fruitModel.price} /",
                 style: AppStyles.styleBold13(context)
                     .copyWith(color: const Color(0XFFF4A91E))),
             TextSpan(
