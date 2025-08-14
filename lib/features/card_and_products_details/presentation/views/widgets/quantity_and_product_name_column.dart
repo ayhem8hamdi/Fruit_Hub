@@ -1,5 +1,5 @@
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
-import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_quantity_section.dart';
+import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_quantity.dart';
 import 'package:flutter/material.dart';
 
 class QuantityAndProductNameColumn extends StatelessWidget {
@@ -23,7 +23,9 @@ class QuantityAndProductNameColumn extends StatelessWidget {
             style: AppStyles.styleRegular13(context)
                 .copyWith(color: const Color(0XFFF4A91F)),
           ),
-          const ProductQuantitySection(),
+          const QuantityWidget(
+            width: 27.5,
+          ),
         ],
       ),
     );

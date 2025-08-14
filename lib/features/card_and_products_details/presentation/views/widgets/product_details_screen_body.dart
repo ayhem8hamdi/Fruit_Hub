@@ -1,3 +1,4 @@
+import 'package:advanced_ecommerce/core/Utils/ui_errors_handler.dart';
 import 'package:advanced_ecommerce/features/OnBoarding/presentation/views/widgets/on_boarding_button.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_description_text.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_features.dart';
@@ -5,6 +6,7 @@ import 'package:advanced_ecommerce/features/card_and_products_details/presentati
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/product_quantity_and_pricing_row.dart';
 import 'package:advanced_ecommerce/features/card_and_products_details/presentation/views/widgets/rating_and_comments_link_row.dart';
 import 'package:advanced_ecommerce/features/home/data/models/fruit_model.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -30,11 +32,14 @@ class ProductDetailsScreenBody extends StatelessWidget {
         const SliverGap(17),
         const ProductFeatures(),
         const SliverGap(20),
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.only(left: 18, right: 18, bottom: 30),
+            padding: const EdgeInsets.only(left: 18, right: 18, bottom: 30),
             child: OnBoardingButton(
               text: 'أضف الي السلة',
+              onTap: () => UiHandler.showFlushBar(
+                  context, 'تمت إضافة هذا المنتج إلى سلة مشترياتك بنجاح',
+                  flushbarPosition: FlushbarPosition.TOP, isError: false),
             ),
           ),
         ),
