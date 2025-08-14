@@ -1,38 +1,73 @@
 import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
 import 'package:advanced_ecommerce/core/Utils/app_styles.dart';
 import 'package:advanced_ecommerce/core/Utils/responsive_image.dart';
+import 'package:advanced_ecommerce/core/Utils/ui_errors_handler.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class QuantityWidget extends StatelessWidget {
-  const QuantityWidget({
-    super.key,
-  });
+class QuantityWidget extends StatefulWidget {
+  const QuantityWidget({super.key});
+
+  @override
+  State<QuantityWidget> createState() => _QuantityWidgetState();
+}
+
+class _QuantityWidgetState extends State<QuantityWidget> {
+  int _quantity = 0;
+
+  void _increment() => setState(() => _quantity++);
+  void _decrement() {
+    if (_quantity == 0) {
+      UiHandler.showFlushBar(
+          context, 'عذرًا، لا يمكن إنقاص الكمية أكثر، أنت بالفعل عند 0 كغ',
+          flushbarPosition: FlushbarPosition.TOP);
+    }
+    if (_quantity > 0) setState(() => _quantity--);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        ResponsiveImage(
-          imageDesignWidth: 36,
-          screenDesignWidth: 375,
-          imageDesignAspectRatio: 1,
-          customImageWidget: SvgPicture.asset(Assets.svgaddproductIcon),
+        ConstrainedQuantityChangerIcon(
+          image: Assets.svgaddproductIcon,
+          onTap: _increment,
         ),
         const Gap(16),
         Text(
-          '4',
+          '$_quantity',
           style: AppStyles.styleBold16(context)
               .copyWith(color: const Color(0XFF06140C)),
         ),
         const Gap(16),
-        ResponsiveImage(
-            imageDesignWidth: 36,
-            screenDesignWidth: 375,
-            imageDesignAspectRatio: 1,
-            customImageWidget: SvgPicture.asset(Assets.svgRemoveProductIcon)),
+        ConstrainedQuantityChangerIcon(
+          image: Assets.svgRemoveProductIcon,
+          onTap: _decrement,
+        ),
       ],
+    );
+  }
+}
+
+class ConstrainedQuantityChangerIcon extends StatelessWidget {
+  const ConstrainedQuantityChangerIcon(
+      {super.key, required this.image, required this.onTap});
+  final String image;
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: ResponsiveImage(
+        imageDesignWidth: 36,
+        screenDesignWidth: 375,
+        imageDesignAspectRatio: 1,
+        customImageWidget: SvgPicture.asset(image),
+      ),
     );
   }
 }
