@@ -116,7 +116,7 @@ abstract class Assets {
 
   static const String bananasImage = 'assets/images/bananas_image.png';
   static const String svgaddproductIcon =
-      'assets/images/svg_add_product_icon.png';
+      'assets/images/svg_add_product_icon.svg';
   static const String svgRemoveProductIcon =
-      'assets/images/svg_remove_product_icon.png';
+      'assets/images/svg_remove_product_icon.svg';
 }
