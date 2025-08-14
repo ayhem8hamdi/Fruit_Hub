@@ -108,6 +108,11 @@ abstract class Assets {
 
   static const String curvedProductItem =
       'assets/images/curved_product_item_background.svg';
-    
-   static const String pricingTagIcon = 'assets/images/tag.svg';
+
+  static const String pricingTagIcon = 'assets/images/tag.svg';
+  static const String mangoImage = 'assets/images/mango_image.png';
+
+  static const String avocadoImage = 'assets/images/avocado_image.png';
+
+  static const String bananasImage = 'assets/images/bananas_image.png';
 }
