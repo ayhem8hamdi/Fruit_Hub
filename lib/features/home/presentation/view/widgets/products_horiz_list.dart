@@ -20,25 +20,45 @@ class ResponsiveHorizontalRowList extends StatelessWidget {
 
   static final List<FruitModel> list = [
     FruitModel(
-        imagelink: Assets.fraisePng, productName: 'فراولة', price: "20جنية"),
+        id: 0,
+        imagelink: Assets.fraisePng,
+        productName: 'فراولة',
+        price: "20جنية"),
     FruitModel(
-        imagelink: Assets.mangoImage, productName: 'مانجو', price: '150جنية'),
+        id: 1,
+        imagelink: Assets.mangoImage,
+        productName: 'مانجو',
+        price: '150جنية'),
     FruitModel(
+        id: 2,
         imagelink: Assets.avocadoImage,
         productName: 'أفوكادو',
         price: '90جنية'),
     FruitModel(
-        imagelink: Assets.bananasImage, productName: 'موز', price: '50جنية'),
+        id: 3,
+        imagelink: Assets.bananasImage,
+        productName: 'موز',
+        price: '50جنية'),
     FruitModel(
-        imagelink: Assets.fraisePng, productName: 'فراولة', price: "20جنية"),
+        id: 4,
+        imagelink: Assets.fraisePng,
+        productName: 'فراولة',
+        price: "20جنية"),
     FruitModel(
-        imagelink: Assets.mangoImage, productName: 'مانجو', price: '150جنية'),
+        id: 5,
+        imagelink: Assets.mangoImage,
+        productName: 'مانجو',
+        price: '150جنية'),
     FruitModel(
+        id: 6,
         imagelink: Assets.avocadoImage,
         productName: 'أفوكادو',
         price: '90جنية'),
     FruitModel(
-        imagelink: Assets.bananasImage, productName: 'موز', price: '50جنية'),
+        id: 7,
+        imagelink: Assets.bananasImage,
+        productName: 'موز',
+        price: '50جنية'),
   ];
   @override
   Widget build(BuildContext context) {

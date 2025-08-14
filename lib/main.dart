@@ -1,4 +1,5 @@
 import 'package:advanced_ecommerce/core/Utils/Router/app_router.dart';
+import 'package:advanced_ecommerce/core/Utils/hero_controller.dart';
 import 'package:advanced_ecommerce/core/services/custom_bloc_observer_service.dart';
 import 'package:advanced_ecommerce/core/services/easy_loading_service.dart';
 import 'package:advanced_ecommerce/core/services/get_it_service.dart';
@@ -15,6 +16,7 @@ void main() async {
   setupDependencies();
   configLoading();
   Bloc.observer = BlocObserverService();
+  Get.put(GetHeroController());
   runApp(
     DevicePreview(
       enabled: true,
@@ -29,6 +31,7 @@ class FruitHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      navigatorObservers: [HeroController()],
       debugShowCheckedModeBanner: false,
       locale: const Locale('ar'),
       getPages: AppRouter.getViews(),

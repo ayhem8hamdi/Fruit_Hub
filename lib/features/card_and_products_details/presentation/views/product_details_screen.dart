@@ -8,10 +8,14 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FruitModel fruit = Get.arguments as FruitModel;
+    final args = Get.arguments as Map<String, dynamic>;
+    final fruitModel = args['fruitModel'] as FruitModel;
+    final heroTag = args['heroTag'] as String;
+
     return Scaffold(
       body: ProductDetailsScreenBody(
-        fruitModel: fruit,
+        fruitModel: fruitModel,
+        heroTag: heroTag,
       ),
     );
   }

@@ -117,6 +117,9 @@ abstract class AppRouter {
       GetPage(
         name: productDetails,
         page: () => const ProductDetailsScreen(),
+        transition: Transition.cupertino, // Matches Hero’s smooth push/pop feel
+        transitionDuration:
+            const Duration(milliseconds: 360), // Keeps hero and page in sync
       ),
     ];
   }

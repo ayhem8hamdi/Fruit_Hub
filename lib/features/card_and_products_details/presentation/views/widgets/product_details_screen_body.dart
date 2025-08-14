@@ -11,14 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductDetailsScreenBody extends StatelessWidget {
-  const ProductDetailsScreenBody({super.key, required this.fruitModel});
+  const ProductDetailsScreenBody(
+      {super.key, required this.fruitModel, required this.heroTag});
   final FruitModel fruitModel;
-
+  final String heroTag;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
         ProductImageAndUpperSection(
+          heroTag: heroTag,
           imageLink: fruitModel.imagelink,
         ),
         const SliverGap(24),

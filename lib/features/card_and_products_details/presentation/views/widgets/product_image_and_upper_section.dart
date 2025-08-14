@@ -6,8 +6,11 @@ class ProductImageAndUpperSection extends StatelessWidget {
   const ProductImageAndUpperSection({
     super.key,
     required this.imageLink,
+    required this.heroTag,
   });
   final String imageLink;
+  final String heroTag;
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -17,10 +20,16 @@ class ProductImageAndUpperSection extends StatelessWidget {
           children: [
             const ProductClippedBackground(),
             Center(
-              child: Image.asset(
-                imageLink,
-                fit: BoxFit.contain,
-                width: MediaQuery.sizeOf(context).width * 0.50,
+              child: Hero(
+                tag: heroTag,
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: Image.asset(
+                    imageLink,
+                    fit: BoxFit.contain,
+                    width: MediaQuery.sizeOf(context).width * 0.50,
+                  ),
+                ),
               ),
             ),
             const Positioned(
