@@ -1,3 +1,5 @@
+import 'package:advanced_ecommerce/core/Utils/app_assets.dart';
+import 'package:advanced_ecommerce/features/home/data/models/fruit_model.dart';
 import 'package:advanced_ecommerce/features/home/presentation/view/widgets/horiz_list_fruit_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -16,6 +18,28 @@ class ProductsHorizList extends StatelessWidget {
 class ResponsiveHorizontalRowList extends StatelessWidget {
   const ResponsiveHorizontalRowList({super.key});
 
+  static final List<FruitModel> list = [
+    FruitModel(
+        imagelink: Assets.fraisePng, productName: 'فراولة', price: "20جنية"),
+    FruitModel(
+        imagelink: Assets.mangoImage, productName: 'مانجو', price: '150جنية'),
+    FruitModel(
+        imagelink: Assets.avocadoImage,
+        productName: 'أفوكادو',
+        price: '90جنية'),
+    FruitModel(
+        imagelink: Assets.bananasImage, productName: 'موز', price: '50جنية'),
+    FruitModel(
+        imagelink: Assets.fraisePng, productName: 'فراولة', price: "20جنية"),
+    FruitModel(
+        imagelink: Assets.mangoImage, productName: 'مانجو', price: '150جنية'),
+    FruitModel(
+        imagelink: Assets.avocadoImage,
+        productName: 'أفوكادو',
+        price: '90جنية'),
+    FruitModel(
+        imagelink: Assets.bananasImage, productName: 'موز', price: '50جنية'),
+  ];
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,10 +47,12 @@ class ResponsiveHorizontalRowList extends StatelessWidget {
       child: Row(
         children: [
           Row(
-            children: List.generate(10, (index) {
-              return const Padding(
-                padding: EdgeInsets.only(right: 9),
-                child: HorizListFruitItem(),
+            children: List.generate(list.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 9),
+                child: HorizListFruitItem(
+                  fruitModel: list[index],
+                ),
               );
             }),
           ),
